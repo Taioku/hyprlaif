@@ -43,5 +43,4 @@ sudo pacman -S discord steam spotify-launcher unzip
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 ```
-> path for **error Cannot detect Spotify "prefs" file location. Please manually set "prefs_path" in config-xpui.ini**  
-> after login, run `spicetify backup apply`
+> after login in spotify, run `spicetify backup apply`
