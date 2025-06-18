@@ -30,6 +30,14 @@ sudo useradd -mG wheel $YOUR_USERNAME
 # I NEED TO ADD EXEC-ONCE IN HYPRLAND COFIG FILE
 ###### Thanks again [mjkstra](https://github.com/mjkstra) for this beautiful guide!
 
+
+### IF WAYBAR
 ```
 sudo pacman -S ttf-martian-mono-nerd
+```
+
+
+# Optional Installs
+```
+sudo pacman -S discord steam spotify
 ```
