@@ -44,4 +44,4 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 ```
 > path for **error Cannot detect Spotify "prefs" file location. Please manually set "prefs_path" in config-xpui.ini**  
-> `$HOME/.local/share/spotify-launcher/install/usr/share/spotify/`
+> after login, run `spicetify backup apply`
