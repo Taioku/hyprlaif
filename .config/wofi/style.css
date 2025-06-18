@@ -1,0 +1,103 @@
+@define-color bg #141419;
+@define-color text #c8c8ff;
+@define-color red #ff3c5a;
+@define-color black #403333;
+@define-color white #ffffff;
+
+@keyframes fadeIn {
+    0% {
+    }
+    100% {
+    }
+}
+
+* {
+    all: unset;
+    font-family: 'Noto Sans';
+    font-size: 18px;
+    outline: none;
+    border: none;
+    text-shadow: none;
+    background-color: transparent;
+}
+
+window {
+    all:unset;
+    padding: 20px;
+    border-radius: 0px;
+    background-color: alpha(@bg,.5);
+}
+#inner-box {
+    margin: 2px;
+    padding: 5px;
+    border: none;
+}
+#outer-box {    
+   border: none;
+}
+
+#scroll {
+    margin: 0px;
+    padding: 30px;
+    border: none;
+}
+
+#input {
+    all: unset;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    border: none;
+    outline: none;
+    color: @text;
+    box-shadow: 1px 1px 5px rgba(@black, .5);
+    border-radius: 0;
+    background-color: alpha(@bg,.2);
+}
+#input * {
+    border: none;
+    outline: none;
+    margin-right: 15;
+    color: @red;
+}
+#input:focus {
+    outline: none;
+    border: none;
+
+    border-radius: 0;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
+}
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
+}
+#entry {
+    border: none;
+    margin: 5px;
+    padding: 10px;
+}
+#entry arrow {
+    border: none;
+    color: @text;
+}
+#entry:selected {
+    box-shadow: 1px 1px 5px rgba(@black, .5);
+    border: none;
+    border-radius: 0px;
+    background-color: alpha(@bg, .2);
+}
+#entry:selected #text {
+    color: @white;
+}
+#entry:drop(active) {
+    background-color: @text !important;
+}
