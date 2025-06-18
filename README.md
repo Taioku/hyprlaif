@@ -39,7 +39,7 @@ sudo pacman -S ttf-martian-mono-nerd
 
 # Optional Installs
 ```
-sudo pacman -S discord steam spotify-launcher
+sudo pacman -S discord steam spotify-launcher unzip
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 ```
