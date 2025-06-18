@@ -40,9 +40,12 @@ sudo pacman -S ttf-martian-mono-nerd
 
 # Optional Installs
 ```
-sudo pacman -S discord steam spotify-launcher unzip asciiquarium eza fastfetch hyprpaper nwg-look
-yay -S waypaper
+sudo pacman -S discord steam spotify-launcher obsidian unzip asciiquarium eza fastfetch hyprpaper nwg-look
+yay -S waypaper cmake meson cpio pkg-config git g++ gcc
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
+hyprpm update
+hyprpm add https://github.com/hyprwm/hyprland-plugins
 ```
+
 > after login in spotify, run `spicetify backup apply`
