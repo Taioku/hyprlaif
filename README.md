@@ -39,7 +39,7 @@ sudo pacman -S ttf-martian-mono-nerd
 
 # Optional Installs
 ```
-sudo pacman -S discord steam spotify-launcher unzip asciiquarium eza fastfetch hyprpaper
+sudo pacman -S discord steam spotify-launcher unzip asciiquarium eza fastfetch hyprpaper nwg-look
 yay -S waypaper
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
