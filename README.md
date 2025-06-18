@@ -19,7 +19,7 @@ sudo pacman -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync x
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-sudo pacman -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pulsemixer
+sudo pacman -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer
 ```
 4. Skip video drivers on [Gaming](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#gaming) step
 5. Dont forget to add yourself to wheel group
