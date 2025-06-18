@@ -1,2 +1,2 @@
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
+autocmd FileType * setlocal tabstop=4 shiftwidth=4
 
