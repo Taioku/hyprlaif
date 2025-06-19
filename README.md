@@ -32,7 +32,7 @@ sudo useradd -mG wheel $YOUR_USERNAME
 # Afetr Arch (make script)
 ```
 sudo pacman -S ttf-martian-mono-nerd discord steam spotify-launcher obsidian unzip eza fastfetch hyprpaper nwg-look
-yay -S --noconfirm waypaper cmake meson cpio pkg-config git g++ gcc lolcat pipes.sh bonsai.sh asciiquarium termtrack genact
+yay -S --noconfirm waypaper cmake meson cpio pkg-config git g++ gcc lolcat pipes.sh bonsai.sh asciiquarium genact
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 hyprpm update
