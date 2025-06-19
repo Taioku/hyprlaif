@@ -34,7 +34,8 @@ sudo useradd -mG wheel $YOUR_USERNAME
 
 # After Arch (make script)
 ```
-yay -S --noconfirm eza fastfetch hyprpaper ttf-martian-mono-nerd noto-fonts noto-fonts-cjk nwg-look gnome-themes-extra gtk-engine-murrine sassc waypaper lolcat pipes.sh bonsai.sh asciiquarium genact cava cxxmatrix feh
+yay -S --noconfirm eza fastfetch hyprpaper networkmanager overskride ttf-martian-mono-nerd noto-fonts noto-fonts-cjk nwg-look gnome-themes-extra gtk-engine-murrine sassc waypaper lolcat pipes.sh bonsai.sh asciiquarium genact cava cxxmatrix feh
+sudo systemctl enable --now bluetooth
 hyprpm update
 hyprpm add https://github.com/hyprwm/hyprland-plugins
 hyprpm enable hyprbars # if you want window bars
