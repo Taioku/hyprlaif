@@ -119,8 +119,8 @@ tooltip label{
 }#temperature.critical {
   padding-right: 3px;
   color: @warning_color;
-  font-size: initial;
   border-bottom: 3px dashed @warning_color;
+  font-size: initial;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -152,7 +152,7 @@ tooltip label{
 
 #pulseaudio{
   font-family: "MartianMono Nerd Font";
-  padding-left: 5px;
+  padding-left: 6px;
   padding-right: 3px;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -165,8 +165,25 @@ tooltip label{
 }
 
 #network {
-  padding-left: 0px;
-  padding-right: 0px;
+  font-family: "MartianMono Nerd Font";
+  font-size: 16;
+  padding-left: 6px;
+  padding-right: 8px;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#network:hover {
+  background: @bg_hover;
+}
+
+
+#bluetooth {
+  font-family: "MartianMono Nerd Font";
+  font-size: 16;
+  padding: 7px;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#bluetooth:hover {
+  background: @bg_hover;
 }
 
 #clock {

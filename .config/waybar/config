@@ -1,12 +1,11 @@
 {
     "layer": "bottom",
-    "position": "bottom",
-    "mod": "dock",
+    "position": "top",
+    "mode": "dock",
     "exclusive": true,
     "gtk-layer-shell": true,
     "margin-bottom": -1,
     "passthrough": false,
-    "height": 41,
     "modules-left": [
         "custom/os_button",
         "hyprland/workspaces",
@@ -21,6 +20,7 @@
         "tray",
         "pulseaudio",
         "network",
+	"bluetooth",
         "battery",
         "clock"
     ],
@@ -103,7 +103,8 @@
     },
     "network": {
         "format-wifi": " {icon}",
-        "format-ethernet": "  ",
+        "format-ethernet": "",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
         "format-disconnected": "󰌙",
         "format-icons": [
             "󰤯 ",
@@ -111,7 +112,21 @@
             "󰤢 ",
             "󰤢 ",
             "󰤨 "
-        ]
+        ],
+	"on-click-middle": "kitty -e nmtui"
+    },
+    "bluetooth": {
+        "format-no-controller": "󱘖",
+	"format-on": "",
+	"format-off": "󰂲",
+	"format-disabled": "",
+	"format-connected": "󰂱 {device_alias}",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+	"on-click-middle": "overskride & disown"
     },
     "battery": {
         "states": {
