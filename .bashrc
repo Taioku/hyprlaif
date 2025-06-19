@@ -12,6 +12,7 @@ alias fonts='fc-list -f "%{family}\n"'
 alias n='nvim'
 alias sing='~/.config/scripts/./sing.sh'
 alias top='btop'
+alias ss='cxxmatrix'
 PS1='\e[3m  \u@\h\e[0m \W\e[97m$\e[0m '
 
 fastfetch
