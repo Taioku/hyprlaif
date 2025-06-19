@@ -32,7 +32,7 @@ sudo useradd -mG wheel $YOUR_USERNAME
 
 # Afetr Arch (make script)
 ```
-sudo pacman -S discord steam spotify-launcher obsidian unzip eza fastfetch hyprpaper ttf-martian-mono-nerd nwg-look
+sudo pacman -S discord steam spotify-launcher obsidian unzip eza fastfetch hyprpaper ttf-martian-mono-nerd nwg-look gnome-themes-extra gtk-engine-murrine sassc
 yay -S --noconfirm waypaper cmake meson cpio pkg-config git g++ gcc lolcat pipes.sh bonsai.sh asciiquarium genact
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
