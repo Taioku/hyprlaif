@@ -15,7 +15,7 @@ In this guide i will be using:
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-sudo pacman -S --needed hyprland wayland kitty nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer
+yay -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer unzip
 ```
 
 ## Using archinstall Script
@@ -23,7 +23,7 @@ sudo pacman -S --needed hyprland wayland kitty nautilus btop wofi waybar swaync 
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-sudo pacman -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer
+yay -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer unzip
 ```
 4. Skip video drivers on [Gaming](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#gaming) step
 5. Dont forget to add yourself to wheel group
@@ -34,13 +34,15 @@ sudo useradd -mG wheel $YOUR_USERNAME
 
 # Afetr Arch (make script)
 ```
-sudo pacman -S discord steam spotify-launcher obsidian unzip eza fastfetch hyprpaper ttf-martian-mono-nerd nwg-look gnome-themes-extra gtk-engine-murrine sassc
-yay -S --noconfirm waypaper cmake meson cpio pkg-config git g++ gcc lolcat pipes.sh bonsai.sh asciiquarium genact
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
-curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
+yay -S --noconfirm eza fastfetch hyprpaper ttf-martian-mono-nerd nwg-look gnome-themes-extra gtk-engine-murrine sassc waypaper lolcat pipes.sh bonsai.sh asciiquarium genact
 hyprpm update
 hyprpm add https://github.com/hyprwm/hyprland-plugins
 hyprpm enable hyprbars
 hyprpm enable hyprexpo
 ```  
+
+# Optional Apps
+```
+yay -S --noconfirm discord steam obsidian spotify-launcher  spicetify-cli
+```
 > after login in spotify, run `spicetify backup apply`
