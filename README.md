@@ -46,6 +46,8 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 hyprpm update
 hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprbars
+hyprpm enable hyprexpo
 ```
 
 > after login in spotify, run `spicetify backup apply`
