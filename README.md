@@ -26,22 +26,13 @@ sudo pacman -S --needed hyprland wayland kitty dolphin btop wofi waybar swaync x
 5. Dont forget to add yourself to wheel group
 ```
 sudo useradd -mG wheel $YOUR_USERNAME
-```
-
-# I NEED TO ADD EXEC-ONCE IN HYPRLAND COFIG FILE
+```  
 ###### Thanks again [mjkstra](https://github.com/mjkstra) for this beautiful guide!
 
-
-### IF WAYBAR
+# Afetr Arch (make script)
 ```
-sudo pacman -S ttf-martian-mono-nerd
-```
-
-
-# Optional Installs
-```
-sudo pacman -S discord steam spotify-launcher obsidian unzip asciiquarium eza fastfetch hyprpaper nwg-look
-yay -S waypaper cmake meson cpio pkg-config git g++ gcc
+sudo pacman -S ttf-martian-mono-nerd discord steam spotify-launcher obsidian unzip eza fastfetch hyprpaper nwg-look
+yay -S --noconfirm waypaper cmake meson cpio pkg-config git g++ gcc lolcat pipes.sh bonsai.sh asciiquarium termtrack genact
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 hyprpm update
