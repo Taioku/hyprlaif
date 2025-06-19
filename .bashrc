@@ -11,6 +11,9 @@ alias loop='sudo reboot'
 alias fonts='fc-list -f "%{family}\n"'
 alias n='nvim'
 alias sing='~/.config/scripts/./sing.sh'
-PS1='[\u@\h \W]\$ '
+alias top='btop'
+PS1='\e[3m  \u@\h\e[0m \W\e[97m$\e[0m '
 
 fastfetch
+
+export PATH=$PATH:/home/taioku/.spicetify
