@@ -20,7 +20,9 @@
         "tray",
         "pulseaudio",
         "network",
-	"bluetooth",
+	      "bluetooth",
+        "custom/screenshot",
+        "custom/wallpaper",
         "battery",
         "clock"
     ],
@@ -128,6 +130,16 @@
 	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
 	"on-click-middle": "overskride & disown"
     },
+    "custom/screenshot": {
+        "format": "󱣵",
+        "on-click": "grim -g \"$(slurp)\" | wl-copy",
+        "tooltip": false
+    },
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "waypaper",
+        "tooltip": false
+    },    
     "battery": {
         "states": {
             "good": 95,
@@ -165,9 +177,9 @@
                 " "
             ]
         },
-	"on-click": "pulsemixer --toggle-mute",
-	"on-scroll-up": "pulsemixer --change-volume +5",
-	"on-scroll-down": "pulsemixer --change-volume -5",
+	      "on-click": "pulsemixer --toggle-mute",
+	      "on-scroll-up": "pulsemixer --change-volume +5",
+	      "on-scroll-down": "pulsemixer --change-volume -5",
         "on-click-middle": "kitty -e pulsemixer"
     }
 }
