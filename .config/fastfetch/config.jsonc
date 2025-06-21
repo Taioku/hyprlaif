@@ -4,7 +4,7 @@
         "source": "~/.config/fastfetch/logo/punpun.txt",
         "padding": {
             "top": 2,
-            "left": 4
+            "left": 3
         },
         "color": {
             "1": "reset_"
@@ -15,10 +15,7 @@
     },
     "modules": [
             "break",
-        {
-            "type": "title",
-            "format": "        T A I O K U"
-        },
+            "break",
             "break",
         {
             "type": "os",
@@ -33,34 +30,33 @@
             "keyColor": "reset_"
         },
         {
-            "type": "terminal",
-            "key": "┃  Terminal",
-            "keyColor": "reset_"
-        },
-        {
             "type": "packages",
             "key": "┃ 󰏗 Packages",
             "keyColor": "reset_"
         },
         {
+            "type": "shell",
+            "key": "┃ ",
+            "keyColor": "reset_"
+        },
+        {
+            "type": "terminal",
+            "key": "┃  Terminal",
+            "keyColor": "reset_"
+        },
+            "break",
+        {
             "type": "command",
-            "key": "┃ 󱦟 OS Age",
+            "key": "  ┃ 󱦟 OS Age",
             "keyColor": "reset_",
             "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
         {
             "type": "uptime",
-            "key": "┃  Uptime",
+            "key": "  ┃  Uptime",
             "keyColor": "reset_"
         },
             "break",
-        {
-            "type": "title",
-            "key": "         ",
-            "format": "{6}{7}{8}",
-            "keyColor": "reset_"
-        },
-            "break",    
         {
             "type": "display",
             "key": "┃ 󰍹 Display",
@@ -85,10 +81,6 @@
             "keyColor": "reset_"
         },
             "break",
-        {
-            "type": "colors",
-            "paddingLeft": 10,
-            "symbol": "circle"
-        }
+            "break"
     ]
 }

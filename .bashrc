@@ -43,15 +43,13 @@ __git_info_prompt() {
 }
 
 print-fetch() {
-  if [[ "$PWD" == "$HOME" ]]; then
-    kitten icat \
-      --align left \
-      --place 35x35@5x2 \
-      ~/.config/fastfetch/logo/logo-0.gif | \
+  kitten icat \
+    --align left \
+    --place 35x35@5x2 \
+    ~/.config/fastfetch/logo/logo-0.gif | \
     fastfetch \
-      --raw - \
-      --logo-width 38
-  fi
+    --raw - \
+    --logo-width 38
 }
 
 ## ── Custom Paths ───────────────────────────────────────────
@@ -60,4 +58,6 @@ export PATH="$PATH:/home/taioku/.spicetify"
 
 ## ── Startup Commands ───────────────────────────────────────
 
-cls
+if [[ "$PWD" == "$HOME" ]]; then
+  cls
+fi
