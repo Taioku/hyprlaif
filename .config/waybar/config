@@ -132,7 +132,9 @@
     },
     "custom/screenshot": {
         "format": "󱣵",
-        "on-click": "grim -g \"$(slurp)\" | wl-copy",
+        "on-click": "grim -g \"$(slurp)\" - | swappy -f -",
+        "on-click-right": "grim -g \"$(slurp)\" - | wl-copy",
+        "on-click-middle": "",
         "tooltip": false
     },
     "custom/wallpaper": {
