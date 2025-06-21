@@ -16,7 +16,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1   # % = untracked
 export GIT_PS1_SHOWUPSTREAM=auto      # = < > <> based on upstream
 
 # Set custom prompt
-PS1='\[\e[3m\]\[\e[90m\]┌──(\[\e[0m\]\[\e[3m\]\u@\h\[\e[0m\]\[\e[90m\])-\[\e[0m\]\[\e[90m\][\[\e[0m\]\[\e[3m\]\w\[\e[0m\]\[\e[90m\]]\[$(__git_info_prompt)\]\[\e[0m\]\n\[\e[3m\]\[\e[90m\]└─\[\e[0m\]\[\e[3m\]\$\[\e[0m\] '
+PS1='  \[\e[3m\]\[\e[90m\]┌──(\[\e[0m\]\[\e[3m\]\u@\h\[\e[0m\]\[\e[90m\])-\[\e[0m\]\[\e[90m\][\[\e[0m\]\[\e[3m\]\w\[\e[0m\]\[\e[90m\]]\[$(__git_info_prompt)\]\[\e[0m\]\n  \[\e[3m\]\[\e[90m\]└─\[\e[0m\]\[\e[3m\]\$\[\e[0m\] '
 
 ## ── Aliases ────────────────────────────────────────────────
 
