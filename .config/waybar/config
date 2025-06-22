@@ -105,7 +105,7 @@
     "network": {
         "format-wifi": " {icon}",
         "format-ethernet": "",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+//        "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
         "format-disconnected": "󰌙",
         "format-icons": [
             "󰤯 ",
@@ -114,7 +114,8 @@
             "󰤢 ",
             "󰤨 "
         ],
-	"on-click-middle": "kitty -e nmtui"
+	      "on-click-middle": "kitty -e nmtui",
+        "tooltip": false
     },
     "bluetooth": {
         "format-no-controller": "󱘖",
@@ -133,14 +134,13 @@
         "format": "󱣵",
         "on-click": "grim -g \"$(slurp)\" - | swappy -f -",
         "on-click-right": "grim -g \"$(slurp)\" - | wl-copy",
-        "on-click-middle": "",
         "tooltip": false
     },
     "custom/wallpaper": {
         "format": "󰸉",
         "on-click": "kill -9 $(pgrep -f wallpaper-loop.sh) & waypaper",
-        "on-click-right": "~/.wallpapers/./wallpaper-loop.sh",
-        "tooltip": false
+        "on-click-right": "kill -9 $(pgrep -f wallpaper-loop.sh) & ~/.wallpapers/./wallpaper-loop.sh",
+        "tooltip-format": "Left click - static wallpaper.\nRight click - .wallpapers loop."
     },    
     "battery": {
         "states": {
