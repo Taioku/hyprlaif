@@ -56,10 +56,6 @@ print-fetch() {
 
 export PATH="$PATH:/home/taioku/.spicetify"
 
-## ── Environment Variables  ─────────────────────────────────
-
-export TZ=$(cat /etc/timezone 2>/dev/null || timedatectl show --value --property=Timezone)
-
 ## ── Startup Commands ───────────────────────────────────────
 
 if [[ "$PWD" == "$HOME" ]]; then
