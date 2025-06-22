@@ -8,6 +8,7 @@ In this guide i will be using:
 - [**Win 11**](https://www.gnome-look.org/p/2278411) GTK Theme
 - [**Win 11**](https://www.gnome-look.org/p/1546069) icon theme [**\***](https://github.com/yeyushengfan258/Win11-icon-theme)
 - [**Bibaa Modern Ice**](https://www.gnome-look.org/p/1197198) cursor theme [**\***](https://github.com/ful1e5/Bibata_Cursor)
+- [**creatiflux**](https://creatiflux.artstation.com/)'s wallpapers
 
 # Arch Linux Install
 ## Default Install
@@ -15,7 +16,7 @@ In this guide i will be using:
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer unzip
+yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland pipewire pulsemixer unzip
 ```
 
 ## Using archinstall Script
@@ -23,7 +24,7 @@ yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi w
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire pulsemixer unzip
+yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland pipewire pulsemixer unzip
 ```
 4. Skip video drivers on [Gaming](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#gaming) step
 5. Dont forget to add yourself to wheel group
