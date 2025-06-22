@@ -1,2 +1,5 @@
+#!/bin/bash
+
 pkill waybar
-waybar & disown
+~/.config/waybar/scripts/start.sh &
+
