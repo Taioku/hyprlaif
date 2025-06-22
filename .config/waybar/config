@@ -138,7 +138,8 @@
     },
     "custom/wallpaper": {
         "format": "󰸉",
-        "on-click": "waypaper",
+        "on-click": "kill -9 $(pgrep -f wallpaper-loop.sh) & waypaper",
+        "on-click-right": "~/.wallpapers/./wallpaper-loop.sh",
         "tooltip": false
     },    
     "battery": {
