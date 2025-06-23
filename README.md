@@ -35,7 +35,7 @@ sudo useradd -mG wheel $YOUR_USERNAME
 
 # After Arch (make script)
 ```
-yay -S --noconfirm neovim wl-clipboard wl-copy grim slurp swappy nvchad-git eza wget mplayer fastfetch hyprpaper networkmanager overskride ttf-jetbrains-mono-nerd nwg-look gnome-themes-extra gtk-engine-murrine galculator sassc waypaper lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
+yay -S --noconfirm neovim wl-clipboard wl-copy grim slurp swappy nvchad-git eza wget mplayer fastfetch hyprpaper networkmanager overskride ttf-jetbrains-mono-nerd ttf-twemoji nwg-look gnome-themes-extra gtk-engine-murrine galculator sassc waypaper lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
 sudo systemctl enable --now bluetooth
 hyprpm update
 hyprpm add https://github.com/hyprwm/hyprland-plugins
