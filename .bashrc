@@ -29,6 +29,9 @@ alias n='nvim'
 alias sing='~/.config/scripts/sing.sh'
 alias tm='btop'
 alias ss='cxxmatrix'
+alias gita='git add .'
+alias gitc='git commit -m'
+alias gitp='git push'
 
 ## ── Custom Functions ───────────────────────────────────────
 
