@@ -139,7 +139,7 @@
     "custom/wallpaper": {
         "format": "󰸉",
         "on-click": "kill -9 $(pgrep -f wallpaper-loop.sh) & waypaper",
-        "on-click-right": "kill -9 $(pgrep -f wallpaper-loop.sh) & ~/.wallpapers/./wallpaper-loop.sh",
+        "on-click-right": "kill -9 $(pgrep -f wallpaper-loop.sh) & ~/.wallpapers/scripts/./wallpaper-loop.sh",
         "tooltip-format": "Left click - static wallpaper.\nRight click - .wallpapers loop."
     },    
     "battery": {
