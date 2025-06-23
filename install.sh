@@ -2,12 +2,18 @@
 #!/bin/bash
 #
 
-THEME_FOLDER="$(pwd)"
+HERE="$(pwd)"
+BAK="$HERE/BACKUP"
 
 echo $THEME_FOLDER
 
-# Link Files
-ln -sf "$THEME_FOLDER/.bashrc" "$HOME/.bashrc"
+# Link .bashrc
+mv "$HOME/.bashrc" "$BAK"
+ln -sf "$HERE/.bashrc" "$HOME"
+
+# Link .wallpapers
+mv "$HOME/.wallpapers" "$BAK"
+ln -sf "$HERE/.wallpapers" "$HOME"
 
 hyprctl reload
 
