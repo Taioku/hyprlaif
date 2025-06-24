@@ -16,7 +16,11 @@ In this guide i will be using:
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland pipewire pulsemixer unzip
+run install script
+```
+4. Dont forget to add yourself to wheel group
+```
+sudo useradd -mG wheel $YOUR_USERNAME
 ```
 
 ## Using archinstall Script
@@ -24,7 +28,7 @@ yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi w
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
-yay -S --noconfirm --needed hyprland wayland kitty yazi feh nautilus btop wofi waybar swaync xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland pipewire pulsemixer unzip
+run install script
 ```
 4. Skip video drivers on [Gaming](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#gaming) step
 5. Dont forget to add yourself to wheel group
@@ -33,18 +37,3 @@ sudo useradd -mG wheel $YOUR_USERNAME
 ```  
 ###### Thanks again [mjkstra](https://github.com/mjkstra) for this beautiful guide!
 
-# After Arch (make script)
-```
-yay -S --noconfirm neovim wl-clipboard wl-copy grim slurp swappy nvchad-git eza wget mplayer fastfetch hyprpaper networkmanager overskride ttf-jetbrains-mono-nerd ttf-twemoji nwg-look gnome-themes-extra gtk-engine-murrine galculator sassc waypaper lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
-sudo systemctl enable --now bluetooth
-hyprpm update
-hyprpm add https://github.com/hyprwm/hyprland-plugins
-hyprpm enable hyprbars # if you want window bars
-hyprpm enable hyprexpo
-```  
-
-# Optional Apps
-```
-yay -S --noconfirm discord steam obsidian spotify-launcher spicetify-cli
-```
-> after login in spotify, run `spicetify backup apply`
