@@ -3,10 +3,6 @@
 # === Configuration ===
 WALLPAPER_DIR="$HOME/.wallpapers"   # Folder with your wallpapers
 INTERVAL=300                        # Time in seconds between changes
-PIDFILE="/tmp/change_wallpaper.pid"
-
-# Write current PID to a file so we can stop it later
-echo $$ > "$PIDFILE"
 
 # === Infinite Loop ===
 while true; do

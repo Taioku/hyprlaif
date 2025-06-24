@@ -71,5 +71,5 @@ else
 fi
 
 # Reload hyprland
-#hyprctl reload
+hyprctl reload
 

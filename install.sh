@@ -58,5 +58,5 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 done < install.conf
 
 # Reload hyprland
-#hyprctl reload
+hyprctl reload
 
