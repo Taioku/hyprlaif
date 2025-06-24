@@ -10,6 +10,12 @@ if [ -d "$BAK" ]; then
   exit 1
 fi
 
+# Check if config file exists
+if [[ ! -f "$HERE/install.conf" ]]; then
+  echo "❌ File 'install.conf' not found!"
+  exit 1
+fi
+
 # Create BACKUP folder
 mkdir -p "$BAK"
 
@@ -18,10 +24,25 @@ backup_and_link() {
   local TARGET="$1"
   local SOURCE="$HERE/$TARGET"
   local DEST="$HOME/$TARGET"
+  local PARENT_DIR
+  local BAK_FOLDER
+
+  # Extrackt parent directory
+  # If '.', it's a top-level file — no folder needed
+  PARENT_DIR="$(dirname "$TARGET")"
+  if [[ "$PARENT_DIR" == "." ]]; then
+    BAK_FOLDER="$BAK"
+  else
+    BAK_FOLDER="$BAK/$PARENT_DIR"
+  fi
+
+  # Create parent folder if it doesnt exists
+  mkdir -p "$BAK_FOLDER"
+
 
   if [ -e "$DEST" ] || [ -L "$DEST" ]; then
-    echo "Backing up $DEST to $BAK"
-    mv "$DEST" "$BAK/"
+    echo "Backing up $DEST to $BAK_FOLDER"
+    mv "$DEST" "$BAK_FOLDER"
   fi
 
   echo "Linkin $SOURCE to $DEST"
@@ -32,9 +53,10 @@ backup_and_link() {
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Skip empty lines or comments
   [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+
   backup_and_link "$line"
 done < install.conf
 
 # Reload hyprland
-hyprctl reload
+#hyprctl reload
 
