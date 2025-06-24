@@ -11,8 +11,8 @@ if [ ! -d "$BAK" ]; then
 fi
 
 # Check if config file exists
-if [[ ! -f "$HERE/install.conf" ]]; then
-  echo "❌ File 'install.conf' not found!"
+if [[ ! -f "$HERE/install-theme.conf" ]]; then
+  echo "❌ File 'install-theme.conf' not found!"
   exit 1
 fi
 
@@ -47,7 +47,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   # Skip empty lines or comments
   [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
   restore_backup "$line"
-done < install.conf
+done < install-theme.conf
 
 # Remove BACKUP folder if empty
 remove_empty_dirs() {
@@ -58,17 +58,13 @@ remove_empty_dirs() {
   fi
   # Recursively remove empty folders
   find "$TARGET_DIR" -type d -empty -delete
+  
+  if [[ -d "$TARGET_DIR" && -n "$(find "$TARGET_DIR" -type f)" ]]; then
+    echo "⚠️ Could not remove BACKUP folder. There are existing files that have not been restored."
+  fi
 }
 
 remove_empty_dirs "$BAK"
-
-# Remove BACKUP folder if fully empty
-if [ -z "$(find "$BAK" -type f)" ]; then
-  echo "Removing empty BACKUP folder"
-  rmdir "$BAK"
-else
-  echo "⚠️ Could not remove BACKUP folder. There are existing files that have not been restored."
-fi
 
 # Reload hyprland
 hyprctl reload

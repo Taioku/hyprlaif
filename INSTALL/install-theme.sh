@@ -11,8 +11,8 @@ if [ -d "$BAK" ]; then
 fi
 
 # Check if config file exists
-if [[ ! -f "$HERE/install.conf" ]]; then
-  echo "❌ File 'install.conf' not found!"
+if [[ ! -f "$HERE/install-theme.conf" ]]; then
+  echo "❌ File 'install-theme.conf' not found!"
   exit 1
 fi
 
@@ -22,7 +22,7 @@ mkdir -p "$BAK"
 # Move target file to BAKUP folder and create symbolic link
 backup_and_link() {
   local TARGET="$1"
-  local SOURCE="$HERE/$TARGET"
+  local SOURCE="$HERE/../$TARGET"
   local DEST="$HOME/$TARGET"
   local PARENT_DIR
   local BAK_FOLDER
@@ -55,7 +55,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
 
   backup_and_link "$line"
-done < install.conf
+done < install-theme.conf
 
 # Reload hyprland
 hyprctl reload
