@@ -4,6 +4,11 @@
 
 ## ── Git Prompt Setup ───────────────────────────────────────
 
+# Enable Git autocompletion
+if [ -f /etc/bash_completion ]; then
+   . /etc/bash_completion
+fi
+
 # Load Git prompt support
 if [ -f /usr/share/git/completion/git-prompt.sh ]; then
   source /usr/share/git/completion/git-prompt.sh
@@ -29,10 +34,14 @@ alias n='nvim'
 alias sing='~/.config/hyprscripts/sing.sh'
 alias tm='btop'
 alias ss='cxxmatrix'
-alias gits='git status'
+
 alias gita='git add'
-alias gitc='git commit -m'
-alias gitp='git push'
+alias gitc='git commit'
+alias gits='git status'
+alias gitp='git pull'
+alias gitb='git branch'
+alias gitf='git fetch'
+
 
 ## ── Custom Functions ───────────────────────────────────────
 

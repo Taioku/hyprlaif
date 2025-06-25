@@ -19,7 +19,7 @@ yay -S --noconfirm \
 
 # - Utilities
 yay -S --noconfirm \
-  galculator
+  galculator bash-completion
 
 # - Media Support
 yay -S --noconfirm \
