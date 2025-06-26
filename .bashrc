@@ -38,10 +38,8 @@ alias ss='cxxmatrix'
 alias gita='git add'
 alias gitc='git commit'
 alias gits='git status'
-alias gitp='git pull'
 alias gitb='git branch'
 alias gitf='git fetch'
-
 
 ## ── Custom Functions ───────────────────────────────────────
 
