@@ -1,6 +1,6 @@
 {
     "layer": "bottom",
-    "position": "bottom",
+    "position": "top",
     "mode": "dock",
     "exclusive": true,
     "gtk-layer-shell": true,
@@ -11,12 +11,10 @@
         "hyprland/workspaces",
         "wlr/taskbar"
     ],
-    "modules-center": [],
+    "modules-center": [
+        "clock"
+    ],
     "modules-right": [
-        "cpu",
-        "temperature",
-        "memory",
-        "disk",
         "tray",
         "pulseaudio",
         "network",
@@ -25,7 +23,11 @@
         "custom/screenshot",
         "custom/wallpaper",
         "battery",
-        "clock"
+        "cpu",
+        "custom/temperature_cpu",
+        "custom/temperature_gpu",
+        "memory",
+        "disk"
     ],
     "hyprland/workspaces": {
         "icon-size": 32,
@@ -43,14 +45,6 @@
         "format": "  {usage}%",
         "max-length": 10,
         "on-click": "kitty -e btop"
-    },
-    "temperature": {
-        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
-        "input-filename": "temp2_input",
-        "critical-threshold": 75,
-        "tooltip": false,
-        "format-critical": "({temperatureC}°C)",
-        "format": "({temperatureC}°C)"
     },
     "disk": {
         "interval": 30,
