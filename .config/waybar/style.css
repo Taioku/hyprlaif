@@ -45,7 +45,7 @@ tooltip label{
 }
 
 #custom-os_button {
-  font-family: "MartianMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font";
   font-size: 20px;
   padding-left: 12px;
   padding-right: 12px;
@@ -151,7 +151,7 @@ tooltip label{
 }
 
 #pulseaudio{
-  font-family: "MartianMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font";
   padding-left: 6px;
   padding-right: 3px;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -165,7 +165,7 @@ tooltip label{
 }
 
 #network {
-  font-family: "MartianMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font";
   font-size: 16;
   padding-left: 6px;
   padding-right: 8px;
@@ -177,7 +177,7 @@ tooltip label{
 
 
 #bluetooth {
-  font-family: "MartianMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font";
   font-size: 16;
   padding: 7px;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -186,8 +186,18 @@ tooltip label{
   background: @bg_hover;
 }
 
+#custom-updates {
+  font-family: "JetbrainsMono Nerd Font";
+  padding-left: 3px;
+  padding-right: 8px;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#custom-updates:hover {
+  background: @bg_hover;
+}
+
 #custom-screenshot {
-  font-family: "MartianMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font";
   font-size: 16;
   padding-left: 6px;
   padding-right: 8px;
@@ -198,7 +208,7 @@ tooltip label{
 }
 
 #custom-wallpaper {
-  font-family: "MartianMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font";
   font-size: 16;
   padding-left: 6px;
   padding-right: 8px;
