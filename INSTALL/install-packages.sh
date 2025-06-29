@@ -38,6 +38,9 @@ sudo systemctl enable --now bluetooth
 sudo systemctl enable --now pipewire pipewire-pulse
 
 # - Install and enable hyprland plugins
+yay -S --noconfirm \
+  cmake meson cpio pkg-config g++ gcc
+
 hyprpm update
 hyprpm add https://github.com/hyprwm/hyprland-plugins
 #hyprpm enable hyprbars # if you want window bars
