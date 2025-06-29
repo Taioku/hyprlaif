@@ -24,7 +24,7 @@ sudo useradd -mG wheel $YOUR_USERNAME
 ```
 
 ## Using archinstall Script
-1. Make a **[minimal]** installation with **[multilib]** and **[pipewire]**, then you can skip to [Aur helper](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#aur-helper-and-additional-packages-installation) step
+1. Make a **[minimal]** installation with **[multilib]**, **[pipewire]** and **[linux-zen]** kernel, then you can skip to [Aur helper](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#aur-helper-and-additional-packages-installation) step
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
 ```
