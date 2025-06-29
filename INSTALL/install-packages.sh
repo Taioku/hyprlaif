@@ -35,7 +35,7 @@ git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 # - Enable essential services
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
-sudo systemctl enable --now pipewire pipewire-pulse
+sudo systemctl enable --user --now pipewire pipewire-pulse
 
 # - Install and enable hyprland plugins
 yay -S --noconfirm \
