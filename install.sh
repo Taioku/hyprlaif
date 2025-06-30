@@ -1,31 +1,123 @@
-# Install yay
+#!/usr/bin/env bash
+
+# ============================================================
+# Hyprland Setup Script
+# ------------------------------------------------------------
+# This script:
+#  1) Installs yay if missing
+#  2) Runs your custom video driver and package installers
+#  3) Installs and enables Hyprland plugins if inside Hyprland
+# ------------------------------------------------------------
+# Usage:
+#   ./setup.sh           # Prompts before each step
+#   ./setup.sh --yesall  # Auto-accepts all steps
+# ============================================================
+
+set -e
+
+# Parse --yesall flag
+YESALL=false
+if [[ "$1" == "--yesall" ]]; then
+  YESALL=true
+  EXTRA_ARGS="--yesall"
+  echo "[+] --yesall flag detected: will auto-accept all prompts."
+fi
+
+# Helper function for y/n prompts
+prompt() {
+  local message="$1"
+  if $YESALL; then
+    echo "[+] Skipping prompt: $message"
+    return 0
+  fi
+  while true; do
+    read -rp "$message [y/N]: " yn
+    case $yn in
+      [Yy]*) return 0 ;;
+      [Nn]*|"") return 1 ;;
+      *) echo "Please answer y or n." ;;
+    esac
+  done
+}
+
+# ------------------------------------------------------------
+# Step 1: Install yay if missing
+# ------------------------------------------------------------
 if ! command -v yay &>/dev/null; then
-  echo "[+] yay not found. Installing yay..."
-  sudo pacman -S --needed git base-devel
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si
-  cd ..
-  rm -rf yay
+  if prompt "yay not found. Install yay?"; then
+    echo "[+] Installing yay..."
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+    rm -rf yay
+    echo "[✓] yay installed successfully."
+  else
+    echo "[!] Skipped yay installation."
+  fi
 else
   echo "[✓] yay is already installed."
 fi
 
-cd INSTALL
+# ------------------------------------------------------------
+# Step 2: Run video drivers installer
+# ------------------------------------------------------------
+if prompt "Run video drivers installer (install-vdrivers.sh)?"; then
+  if [[ -f INSTALL/install-vdrivers.sh ]]; then
+    chmod +x INSTALL/install-vdrivers.sh
+    ./INSTALL/install-vdrivers.sh $EXTRA_ARGS
+  else
+    echo "[!] install-vdrivers.sh not found!"
+  fi
+else
+  echo "[!] Skipped video drivers installer."
+fi
 
-# - Install Video Drivers 
-chmod +x install-vdrivers.sh
-./install-vdrivers.sh
+# ------------------------------------------------------------
+# Step 3: Run packages installer
+# ------------------------------------------------------------
+if prompt "Run packages installer (install-packages.sh)?"; then
+  if [[ -f INSTALL/install-packages.sh ]]; then
+    chmod +x INSTALL/install-packages.sh
+    ./INSTALL/install-packages.sh
+  else
+    echo "[!] install-packages.sh not found!"
+  fi
+else
+  echo "[!] Skipped packages installer."
+fi
 
-# - Install Packages
-chmod +x install-packages.sh
-./install-packages.sh
+# ------------------------------------------------------------
+# Step 4: Hyprland plugins setup
+# ------------------------------------------------------------
+if [[ "$XDG_CURRENT_DESKTOP" == "Hyprland" || -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+  echo "[✓] Hyprland detected."
 
-# - Install and enable hyprland plugins
-yay -S --noconfirm --needed \
-#  cmake meson cpio pkg-config g++ gcc
+  if prompt "Install Hyprland plugin build dependencies with yay?"; then
+    yay -S --noconfirm --needed cmake meson cpio pkg-config g++ gcc
+  else
+    echo "[!] Skipped installing Hyprland build dependencies."
+  fi
 
-#hyprpm update
-#hyprpm add https://github.com/hyprwm/hyprland-plugins
-#hyprpm enable hyprbars # if you want window bars
-#hyprpm enable hyprexpo
+  if prompt "Update Hyprpm plugins and add official repo?"; then
+    hyprpm update
+    hyprpm add https://github.com/hyprwm/hyprland-plugins
+  else
+    echo "[!] Skipped Hyprpm update and repo add."
+  fi
+
+  if prompt "Enable Hyprland plugins (hyprbars, hyprexpo)?"; then
+    hyprpm enable hyprbars
+    hyprpm enable hyprexpo
+    echo "[✓] Hyprland plugins enabled."
+  else
+    echo "[!] Skipped enabling Hyprland plugins."
+  fi
+
+else
+  echo "[!] Hyprland not detected. Skipping Hyprland plugins setup."
+fi
+
+echo "[✓] Script complete."
+
