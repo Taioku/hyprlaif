@@ -1,6 +1,6 @@
 # - Essential Packages
-yay -S --noconfirm \
-  wayland xdg-desktop-portal xdg-desktop-portal-hyprland xdg-user-dirs hyprpolkitagent \
+yay -S --noconfirm --needed \
+  hyprland wayland xdg-desktop-portal xdg-desktop-portal-hyprland xdg-user-dirs hyprpolkitagent \
   qt5-wayland qt6-wayland \
   pipewire pipewire-pulse wireplumber pulsemixer \
   wl-clipboard \
@@ -12,21 +12,21 @@ yay -S --noconfirm \
   kitty yazi feh thunar
 
 # - Aesthetics & Theming
-yay -S --noconfirm \
+yay -S --noconfirm --needed \
   nwg-look gnome-themes-extra gtk-engine-murrine sassc \
   ttf-jetbrains-mono-nerd ttf-twemoji \
   waypaper hyprpaper
 
 # - Utilities
-yay -S --noconfirm \
+yay -S --noconfirm --needed \
   calc mate-calc bash-completion
 
 # - Media Support
-yay -S --noconfirm \
+yay -S --noconfirm --needed \
   mplayer
 
 # - Fun
-yay -S --noconfirm \
+yay -S --noconfirm --needed \
   lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
 
 # - Enable essential services
@@ -35,7 +35,7 @@ sudo systemctl enable --now bluetooth
 sudo systemctl enable --user --now pipewire pipewire-pulse wireplumber
 
 # Optional Apps
-yay -S --noconfirm \
+yay -S --noconfirm --needed \
   #discord
   #steam
   #obsidian
