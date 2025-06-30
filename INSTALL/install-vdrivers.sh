@@ -1,40 +1,46 @@
 #!/usr/bin/env bash
 
-# ── GPU Driver Installer for Arch ──────────────────────────────
+# ── GPU Driver Installer for Arch with 32-bit support ───────────
 
-# Detect GPU(s)
 GPUS=$(lspci | grep -E "VGA|3D")
 
 echo "Detected GPU(s):"
 echo "$GPUS"
 echo ""
 
-# Init package list
 DRIVERS=()
 
-# Check for Intel
+# Common libs for all GPUs
+COMMON_PKGS=(libglvnd lib32-libglvnd)
+
+# Intel
 if echo "$GPUS" | grep -qi intel; then
   echo "→ Intel GPU detected."
   DRIVERS+=("mesa" "vulkan-intel" "libva-mesa-driver" "mesa-vdpau")
 fi
 
-# Check for AMD
+# AMD
 if echo "$GPUS" | grep -qi amd; then
   echo "→ AMD GPU detected."
   DRIVERS+=("mesa" "vulkan-radeon" "libva-mesa-driver" "mesa-vdpau" "linux-firmware")
 fi
 
-# Check for NVIDIA
+# NVIDIA
 if echo "$GPUS" | grep -qi nvidia; then
   echo "→ NVIDIA GPU detected."
   DRIVERS+=("nvidia" "nvidia-utils" "nvidia-settings")
 fi
 
-# Summary
+# Add common libs at the end to avoid duplicates
+DRIVERS+=("${COMMON_PKGS[@]}")
+
+# Remove duplicates
+# (bash 4+ needed)
+mapfile -t DRIVERS < <(printf '%s\n' "${DRIVERS[@]}" | sort -u)
+
 echo ""
 echo "Packages to install: ${DRIVERS[*]}"
 
-# Confirm and install
 read -rp "Install these drivers now? [y/N]: " confirm
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
   sudo pacman -S --needed "${DRIVERS[@]}"
