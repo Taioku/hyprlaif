@@ -1,15 +1,19 @@
+# - Hyprland itself
+yay -S --noconfirm \
+  hyprland-git
+
 # - Essential Packages
 yay -S --noconfirm \
-  hyprland wayland xdg-desktop-portal-hyprland \
+  wayland xdg-desktop-portal xdg-desktop-portal-hyprland xdg-user-dirs hyprpolkitagent \
   qt5-wayland qt6-wayland \
-  pipewire pulsemixer \
-  wl-clipboard wl-copy \
+  pipewire pipewire-pulse wireplumber pulsemixer \
+  wl-clipboard \
   grim slurp swappy \
-  swaync waybar wofi hyprpolkitagent \
-  networkmanager overskride \
-  neovim unzip wget \
+  swaync waybar wofi\
+  networkmanager bluez bluez-utils blueman \
+  neovim nvchad-git unzip wget \
   eza btop fastfetch \
-  kitty yazi feh nautilus
+  kitty yazi feh thunar
 
 # - Aesthetics & Theming
 yay -S --noconfirm \
@@ -19,7 +23,7 @@ yay -S --noconfirm \
 
 # - Utilities
 yay -S --noconfirm \
-  galculator bash-completion
+  calc mate-calc bash-completion
 
 # - Media Support
 yay -S --noconfirm \
@@ -29,22 +33,19 @@ yay -S --noconfirm \
 yay -S --noconfirm \
   lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
 
-# - NvChad Setup
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-
 # - Enable essential services
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
-sudo systemctl enable --user --now pipewire pipewire-pulse
+sudo systemctl enable --user --now pipewire pipewire-pulse wireplumber
 
 # - Install and enable hyprland plugins
 yay -S --noconfirm \
-  cmake meson cpio pkg-config g++ gcc
+#  cmake meson cpio pkg-config g++ gcc
 
-hyprpm update
-hyprpm add https://github.com/hyprwm/hyprland-plugins
+#hyprpm update
+#hyprpm add https://github.com/hyprwm/hyprland-plugins
 #hyprpm enable hyprbars # if you want window bars
-hyprpm enable hyprexpo
+#hyprpm enable hyprexpo
 
 # Optional Apps
 yay -S --noconfirm \
