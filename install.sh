@@ -11,15 +11,14 @@ else
   echo "[✓] yay is already installed."
 fi
 
-yay -S --noconfirm --needed \
-  hyprland
-
-
-# - Install Video Drivers and Packages
 cd INSTALL
+
+# - Install Video Drivers 
 chmod +x install-vdrivers.sh
-chmod +x install-packages.sh
 ./install-vdrivers.sh
+
+# - Install Packages
+chmod +x install-packages.sh
 ./install-packages.sh
 
 # - Install and enable hyprland plugins
