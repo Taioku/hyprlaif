@@ -1,7 +1,3 @@
-# - Hyprland itself
-yay -S --noconfirm \
-  hyprland-git
-
 # - Essential Packages
 yay -S --noconfirm \
   wayland xdg-desktop-portal xdg-desktop-portal-hyprland xdg-user-dirs hyprpolkitagent \
@@ -37,15 +33,6 @@ yay -S --noconfirm \
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
 sudo systemctl enable --user --now pipewire pipewire-pulse wireplumber
-
-# - Install and enable hyprland plugins
-yay -S --noconfirm \
-#  cmake meson cpio pkg-config g++ gcc
-
-#hyprpm update
-#hyprpm add https://github.com/hyprwm/hyprland-plugins
-#hyprpm enable hyprbars # if you want window bars
-#hyprpm enable hyprexpo
 
 # Optional Apps
 yay -S --noconfirm \
