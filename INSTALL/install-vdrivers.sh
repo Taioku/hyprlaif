@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# ── GPU Driver Installer for Arch ──────────────────────────────
+
 # Detect GPU(s)
 GPUS=$(lspci | grep -E "VGA|3D")
 
@@ -13,21 +15,18 @@ DRIVERS=()
 # Check for Intel
 if echo "$GPUS" | grep -qi intel; then
   echo "→ Intel GPU detected."
-  DRIVERS+=("mesa")
+  DRIVERS+=("mesa" "vulkan-intel" "libva-mesa-driver" "mesa-vdpau")
 fi
 
 # Check for AMD
 if echo "$GPUS" | grep -qi amd; then
   echo "→ AMD GPU detected."
-  DRIVERS+=("mesa" "linux-firmware")
+  DRIVERS+=("mesa" "vulkan-radeon" "libva-mesa-driver" "mesa-vdpau" "linux-firmware")
 fi
 
 # Check for NVIDIA
 if echo "$GPUS" | grep -qi nvidia; then
   echo "→ NVIDIA GPU detected."
-  
-  # You can add extra checks for legacy cards here.
-  # For now, assume newest driver:
   DRIVERS+=("nvidia" "nvidia-utils" "nvidia-settings")
 fi
 
