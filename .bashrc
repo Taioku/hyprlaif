@@ -9,6 +9,7 @@ PS1='  \[\e[3m\]\[\e[90m\]┌──(\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\u@\h
 ## ── Aliases ────────────────────────────────────────────────
 
 alias cls='__print_fetch'
+alias ls='ls --color=auto'
 alias lsd='eza --icons'
 alias bye='sudo shutdown -h now'
 alias loop='sudo reboot'
