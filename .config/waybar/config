@@ -37,7 +37,7 @@
     },
     "custom/os_button": {
         "format": "",
-        "on-click": "wofi --show drun",
+        "on-click": "wofi --show drun -n -c ~/.config/wofi/config -s ~/.config/wofi/style.css",
         "tooltip": false
     },
     "cpu": {

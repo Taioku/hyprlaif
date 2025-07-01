@@ -6,8 +6,10 @@
 
 ## ── Fastfetch ───────────────────────────────────────────────
 # Display system info if 'fastfetch' is installed
-if [ -x /usr/bin/fastfetch ]; then
+if [[ $(tty) != /dev/tty* ]]; then
+  if [ -x /usr/bin/fastfetch ]; then
     fastfetch
+  fi
 fi
 
 ## ── History Configuration ───────────────────────────────────
@@ -117,12 +119,12 @@ __git_info_prompt() {
     printf '\e[90m}'
 }
 
-# Wrap 'cd' to auto-track and auto-list
+# Override 'cd' to use 'z'
 cd() {
-  if builtin cd "$@"; then
-    if command -v zoxide &>/dev/null; then
-      zoxide add "$(pwd)"
-    fi
+  if [ $# -eq 0 ]; then
+    builtin cd ~
+  else
+    z "$@"
     ls
   fi
 }
