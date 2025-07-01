@@ -1,138 +1,169 @@
 # ~/.bashrc
-# Exit if not running interactively
+
+## ── Early Exit ──────────────────────────────────────────────
+# Exit immediately if the shell is not interactive
 [[ $- != *i* ]] && return
 
-## ── Prompt Setup ───────────────────────────────────────────
+## ── Fastfetch ───────────────────────────────────────────────
+# Display system info if 'fastfetch' is installed
+if [ -x /usr/bin/fastfetch ]; then
+    fastfetch
+fi
 
-PS1='  \[\e[3m\]\[\e[90m\]┌──(\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\u@\h\[\e[0m\]\[\e[3m\]\[\e[90m\])-\[\e[0m\]\[\e[90m\][\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\w\[\e[0m\]\[\e[3m\]\[\e[90m\]]\[$(__git_info_prompt)\]\[\e[0m\]\n  \[\e[3m\]\[\e[90m\]└─\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\$\[\e[0m\] '
+## ── History Configuration ───────────────────────────────────
+# Avoid duplicate entries and ignore commands starting with space
+export HISTCONTROL=erasedups:ignoredups:ignorespace
 
-## ── Aliases ────────────────────────────────────────────────
+# Append to history file, don't overwrite it
+shopt -s histappend
 
-alias ..='cd ..'
+# Write to history after every command
+PROMPT_COMMAND='history -a'
+
+## ── Editors ─────────────────────────────────────────────────
+export EDITOR=nvim
+export VISUAL=nvim
+
+## ── LS_COLORS ───────────────────────────────────────────────
+# Customize colors for 'ls'
+export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:'
+
+## ── Prompt ──────────────────────────────────────────────────
+# Custom PS1 prompt with Git info
+PS1='  \[\e[3m\]\[\e[90m\]┌──(\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\u@\h\[\e[0m\]\[\e[3m\]\[\e[90m\])-[\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\w\[\e[0m\]\[\e[3m\]\[\e[90m\]]$(__git_info_prompt)\n  \[\e[3m\]\[\e[90m\]└─\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\$\[\e[0m\] '
+
+## ── Aliases ─────────────────────────────────────────────────
+
+# Navigation
+alias ..='z ..'
+alias z='z'  # Handled by zoxide
+
+# Safe file operations
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 
+# Listing
 alias lsd='eza -Ax --icons'
 alias ls='ls -Apx --color=always'
-alias lm='ls -alh | more'         # pipe through 'more'
-alias ll='ls -alh | less'         # pipe through 'less'
-alias lf="ls -p | grep -v /"      # files only
-alias ld="ls -d */"               # directories only
+alias lm='ls -alh | more'
+alias ll='ls -alh | less'
+alias lf="ls -p | grep -v /"   # files only
+alias ld="ls -d */"            # dirs only
 
+# Editors
 alias n='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
+# Search
+alias grep='grep --color=always'
+
+# Package helper
 alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 
-alias cls='__print_fetch'
-
+# Misc
+alias c='clear'
 alias bye='sudo shutdown -h now'
 alias loop='sudo reboot'
-
 alias fonts='fc-list -f "%{family}\n"'
-
 alias sing='~/.config/hyprscripts/sing.sh'
 alias tm='btop'
 alias ss='cxxmatrix'
 
+# Git shortcuts
 alias gita='git add'
 alias gitc='git commit'
 alias gits='git status'
 alias gitb='git branch'
 alias gitf='git fetch'
 
-# Search command line history
+# Search history
 alias hs="history | grep "
 
-# alias to cleanup unused docker containers, images, networks, and volumes
-alias docker-clean=' \
-  docker container prune -f ; \
-  docker image prune -f ; \
-  docker network prune -f ; \
-  docker volume prune -f '
+# Docker cleanup
+alias docker-clean='
+  docker container prune -f &&
+  docker image prune -f &&
+  docker network prune -f &&
+  docker volume prune -f'
 
+# The Fuck
 eval "$(thefuck --alias)"
 
-## ── Custom Functions ───────────────────────────────────────
+## ── Functions ──────────────────────────────────────────────
 
-# Automatically do an ls after each cd, z, or zoxide
-cd () {
-	if [ -n "$1" ]; then
-		builtin cd "$@" && ls
-	else
-		builtin cd ~ && ls
-	fi
+# z with auto-ls (overrides zoxide's default)
+z() {
+  if [ -n "$1" ]; then
+    builtin cd "$@" && ls
+  else
+    builtin cd ~ && ls
+  fi
 }
 
-# IP address lookup
+# Local and external IP address lookup
+whatsmyip() {
+  echo -n "Internal IP: "
+  if command -v ip &>/dev/null; then
+    ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f1
+  else
+    ifconfig wlan0 | awk '/inet / {print $2}'
+  fi
+
+  echo -n " | External IP: "
+  curl -s -4 ifconfig.me
+  echo
+}
 alias whatismyip="whatsmyip"
-function whatsmyip () {
-    # Internal IP Lookup.
-    if command -v ip &> /dev/null; then
-        echo -n "Internal IP: "
-        ip addr show wlan0 | grep "inet " | awk '{print $2}' | cut -d/ -f1
-    else
-        echo -n "Internal IP: "
-        ifconfig wlan0 | grep "inet " | awk '{print $2}'
-    fi
 
-    # External IP Lookup
-    echo -en "External IP: "
-    curl -4 ifconfig.me
-    echo ""
-}
-
-# GitHub Additions
+# Git helpers
 gcom() {
-	git add .
-	git commit -m "$1"
+  git add .
+  git commit -m "$1"
 }
 lazyg() {
-	git add .
-	git commit -m "$1"
-	git push
+  git add .
+  git commit -m "$1"
+  git push
 }
 
+# Show Git branch info in prompt
 __git_info_prompt() {
-  # Check if the current directory is inside a Git repository
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
-  # Load Git prompt script only once
   if [[ -z "$__GIT_PROMPT_LOADED" ]]; then
     local git_prompt_script="/usr/share/git/completion/git-prompt.sh"
     [[ -f "$git_prompt_script" ]] && source "$git_prompt_script"
 
-    # Configure git prompt state flags
-    export GIT_PS1_SHOWDIRTYSTATE=1       # * = unstaged, + = staged
-    export GIT_PS1_SHOWSTASHSTATE=1       # $ = stash
-    export GIT_PS1_SHOWUNTRACKEDFILES=1   # % = untracked
-    export GIT_PS1_SHOWUPSTREAM=auto      # = < > <> based on upstream
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM=auto
 
     __GIT_PROMPT_LOADED=1
   fi
 
-  # Capture current branch name using __git_ps1 and display it
   local branch
   branch=$(__git_ps1 "%s")
   printf '\e[90m-{'
-  printf '\e[0m\e[97m%s' "$branch"
-  printf '\e[0m\e[90m}'
+  printf '\e[97m%s' "$branch"
+  printf '\e[90m}'
 }
 
-__print_fetch() {
+# Prettyfetch using kitten icat and fastfetch
+prettyfetch() {
   kitten icat \
     --align left \
     --place 35x35@5x2 \
-    ~/.config/fastfetch/logo/logo-0.gif | \
-    fastfetch \
-    --raw - \
-    --logo-width 38
+    ~/.config/fastfetch/logo/logo-0.gif |
+  fastfetch --raw - --logo-width 38
 }
 
-## ── Custom Paths ───────────────────────────────────────────
+## ── Startup Bindings ───────────────────────────────────────
+# Ctrl-F runs zoxide interactive mode
+bind '"\C-f":"zi\n"'
 
-export PATH="$PATH:$HOME/.spicetify"
+# Initialize zoxide (smarter cd)
+eval "$(zoxide init bash)"
 
-## ── Startup Commands ───────────────────────────────────────
-
-#[[ "$PWD" == "$HOME" ]] && __print_fetch
