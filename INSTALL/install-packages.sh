@@ -9,7 +9,7 @@ yay -S --noconfirm --needed \
   networkmanager bluez bluez-utils blueman \
   neovim nvchad-git unzip wget \
   eza btop fastfetch \
-  kitty yazi feh thunar
+  kitty fzf zoxide yazi feh thunar
 
 # - Aesthetics & Theming
 yay -S --noconfirm --needed \

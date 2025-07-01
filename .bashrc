@@ -93,63 +93,60 @@ eval "$(thefuck --alias)"
 
 ## ── Functions ──────────────────────────────────────────────
 
-# z with auto-ls (overrides zoxide's default)
-z() {
-  if [ -n "$1" ]; then
-    builtin cd "$@" && ls
-  else
-    builtin cd ~ && ls
-  fi
-}
-
-# Local and external IP address lookup
-whatsmyip() {
-  echo -n "Internal IP: "
-  if command -v ip &>/dev/null; then
-    ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f1
-  else
-    ifconfig wlan0 | awk '/inet / {print $2}'
-  fi
-
-  echo -n " | External IP: "
-  curl -s -4 ifconfig.me
-  echo
-}
-alias whatismyip="whatsmyip"
-
-# Git helpers
-gcom() {
-  git add .
-  git commit -m "$1"
-}
-lazyg() {
-  git add .
-  git commit -m "$1"
-  git push
-}
-
 # Show Git branch info in prompt
 __git_info_prompt() {
-  git rev-parse --is-inside-work-tree &>/dev/null || return
+    git rev-parse --is-inside-work-tree &>/dev/null || return
 
-  if [[ -z "$__GIT_PROMPT_LOADED" ]]; then
-    local git_prompt_script="/usr/share/git/completion/git-prompt.sh"
-    [[ -f "$git_prompt_script" ]] && source "$git_prompt_script"
+    if [[ -z "$__GIT_PROMPT_LOADED" ]]; then
+        for script in \
+            /usr/share/git/completion/git-prompt.sh \
+            /etc/bash_completion.d/git-prompt \
+            "$HOME/.local/share/git-prompt.sh"; do
+            [[ -f "$script" ]] && source "$script" && break
+        done
+        export GIT_PS1_SHOWDIRTYSTATE=1
+        export GIT_PS1_SHOWSTASHSTATE=1
+        export GIT_PS1_SHOWUNTRACKEDFILES=1
+        export GIT_PS1_SHOWUPSTREAM=auto
+        __GIT_PROMPT_LOADED=1
+    fi
 
-    export GIT_PS1_SHOWDIRTYSTATE=1
-    export GIT_PS1_SHOWSTASHSTATE=1
-    export GIT_PS1_SHOWUNTRACKEDFILES=1
-    export GIT_PS1_SHOWUPSTREAM=auto
-
-    __GIT_PROMPT_LOADED=1
-  fi
-
-  local branch
-  branch=$(__git_ps1 "%s")
-  printf '\e[90m-{'
-  printf '\e[97m%s' "$branch"
-  printf '\e[90m}'
+    local branch=$(__git_ps1 "%s")
+    printf '\e[90m-{'
+    printf '\e[97m%s' "$branch"
+    printf '\e[90m}'
 }
+
+# Wrap 'cd' to auto-track and auto-list
+cd() {
+  if builtin cd "$@"; then
+    if command -v zoxide &>/dev/null; then
+      zoxide add "$(pwd)"
+    fi
+    ls
+  fi
+}
+
+# IP lookup portable
+alias whatismyip="whatsmyip"
+whatsmyip() {
+    echo -n "Internal IP: "
+    if command -v ip &>/dev/null; then
+        ip addr show | awk '/inet / && $2 !~ /^127/ {print $2}' | cut -d/ -f1 | head -n1
+    elif command -v ifconfig &>/dev/null; then
+        ifconfig | awk '/inet / && $2 != "127.0.0.1" {print $2}' | head -n1
+    else
+        echo "unknown"
+    fi
+
+    echo -n " | External IP: "
+    command -v curl &>/dev/null && curl -s -4 ifconfig.me || echo "unknown"
+    echo
+}
+
+# Git add+commit
+gcom() { git add . && git commit -m "$1"; }
+lazyg() { git add . && git commit -m "$1" && git push; }
 
 # Prettyfetch using kitten icat and fastfetch
 prettyfetch() {
