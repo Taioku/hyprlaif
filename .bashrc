@@ -37,8 +37,7 @@ PS1='  \[\e[3m\]\[\e[90m\]┌──(\[\e[0m\]\[\e[3m\]\[\e[38;2;255;0;53m\]\u@\h
 ## ── Aliases ─────────────────────────────────────────────────
 
 # Navigation
-alias ..='z ..'
-alias z='z'  # Handled by zoxide
+alias ..='cd ..'
 
 # Safe file operations
 alias cp='cp -i'
@@ -50,8 +49,8 @@ alias lsd='eza -Ax --icons'
 alias ls='ls -Apx --color=always'
 alias lm='ls -alh | more'
 alias ll='ls -alh | less'
-alias lf="ls -p | grep -v /"   # files only
-alias ld="ls -d */"            # dirs only
+alias lf="ls -p | grep -v /" # files only
+alias ld="ls -d */"          # dirs only
 
 # Editors
 alias n='nvim'
@@ -97,26 +96,26 @@ eval "$(thefuck --alias)"
 
 # Show Git branch info in prompt
 __git_info_prompt() {
-    git rev-parse --is-inside-work-tree &>/dev/null || return
+  git rev-parse --is-inside-work-tree &>/dev/null || return
 
-    if [[ -z "$__GIT_PROMPT_LOADED" ]]; then
-        for script in \
-            /usr/share/git/completion/git-prompt.sh \
-            /etc/bash_completion.d/git-prompt \
-            "$HOME/.local/share/git-prompt.sh"; do
-            [[ -f "$script" ]] && source "$script" && break
-        done
-        export GIT_PS1_SHOWDIRTYSTATE=1
-        export GIT_PS1_SHOWSTASHSTATE=1
-        export GIT_PS1_SHOWUNTRACKEDFILES=1
-        export GIT_PS1_SHOWUPSTREAM=auto
-        __GIT_PROMPT_LOADED=1
-    fi
+  if [[ -z "$__GIT_PROMPT_LOADED" ]]; then
+    for script in \
+      /usr/share/git/completion/git-prompt.sh \
+      /etc/bash_completion.d/git-prompt \
+      "$HOME/.local/share/git-prompt.sh"; do
+      [[ -f "$script" ]] && source "$script" && break
+    done
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM=auto
+    __GIT_PROMPT_LOADED=1
+  fi
 
-    local branch=$(__git_ps1 "%s")
-    printf '\e[90m-{'
-    printf '\e[97m%s' "$branch"
-    printf '\e[90m}'
+  local branch=$(__git_ps1 "%s")
+  printf '\e[90m-{'
+  printf '\e[97m%s' "$branch"
+  printf '\e[90m}'
 }
 
 # Override 'cd' to use 'z'
@@ -132,18 +131,18 @@ cd() {
 # IP lookup portable
 alias whatismyip="whatsmyip"
 whatsmyip() {
-    echo -n "Internal IP: "
-    if command -v ip &>/dev/null; then
-        ip addr show | awk '/inet / && $2 !~ /^127/ {print $2}' | cut -d/ -f1 | head -n1
-    elif command -v ifconfig &>/dev/null; then
-        ifconfig | awk '/inet / && $2 != "127.0.0.1" {print $2}' | head -n1
-    else
-        echo "unknown"
-    fi
+  echo -n "Internal IP: "
+  if command -v ip &>/dev/null; then
+    ip addr show | awk '/inet / && $2 !~ /^127/ {print $2}' | cut -d/ -f1 | head -n1
+  elif command -v ifconfig &>/dev/null; then
+    ifconfig | awk '/inet / && $2 != "127.0.0.1" {print $2}' | head -n1
+  else
+    echo "unknown"
+  fi
 
-    echo -n " | External IP: "
-    command -v curl &>/dev/null && curl -s -4 ifconfig.me || echo "unknown"
-    echo
+  echo -n " | External IP: "
+  command -v curl &>/dev/null && curl -s -4 ifconfig.me || echo "unknown"
+  echo
 }
 
 # Git add+commit
@@ -156,13 +155,12 @@ prettyfetch() {
     --align left \
     --place 35x35@5x2 \
     ~/.config/fastfetch/logo/logo-0.gif |
-  fastfetch --raw - --logo-width 38
+    fastfetch --raw - --logo-width 38
 }
 
 ## ── Startup Bindings ───────────────────────────────────────
 # Ctrl-F runs zoxide interactive mode
-bind '"\C-f":"zi\n"'
+bind '"\C-f":"cdi\n"'
 
 # Initialize zoxide (smarter cd)
-eval "$(zoxide init bash)"
-
+eval "$(zoxide init --cmd cd bash)"
