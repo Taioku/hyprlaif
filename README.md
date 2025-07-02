@@ -21,5 +21,5 @@ sudo useradd -mG wheel $YOUR_USERNAME
 
 ### 3. Install hyprland and requirements + setup:
 ```bash
-git clone https://github.com/taioku/hyprlaif.git && cd hyprlaif && ./install.sh
+git clone https://github.com/Taioku/hyprlaif.git && cd hyprlaif && ./install.sh
 ```
