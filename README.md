@@ -14,13 +14,12 @@ In this guide i will be using:
 ### 1. For the Arch installation we will be using archinstall script
 > Make a **[minimal]** installation with **[multilib]** and **[linux-zen]** kernel then reboot
 
-### 2. Install hyprland and requirements + setup:
-```bash
-run install script
-```
-
-### 3. Dont forget to add yourself to wheel group
+### 2. Dont forget to add yourself to wheel group
 ```bash
 sudo useradd -mG wheel $YOUR_USERNAME
 ```
 
+### 3. Install hyprland and requirements + setup:
+```bash
+run install script
+```
