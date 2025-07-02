@@ -1,5 +1,5 @@
 # Hyprlaif
-From Arch ISO to Hyprland, full personal guide to get hyprland up and going.
+From Arch ISO to Hyprland, full personal guide to get my hyprland setup up and going.
 
 In this guide i will be using:  
 - [**Hyprland Wiki**](https://wiki.hypr.land/)
@@ -10,20 +10,9 @@ In this guide i will be using:
 - [**Bibaa Modern Ice**](https://www.gnome-look.org/p/1197198) cursor theme [**\***](https://github.com/ful1e5/Bibata_Cursor)
 - [**creatiflux**](https://creatiflux.artstation.com/)'s wallpapers
 
-# Arch Linux Install
-## Default Install
-1. follow mjkstra's [guide](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae)
-2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
-3. Install hyprland and requirements
-```
-run install script
-```
-4. Dont forget to add yourself to wheel group
-```
-sudo useradd -mG wheel $YOUR_USERNAME
-```
+# Arch Install
 
-## Using archinstall Script
+### For the Arch installation we will be using archinstall
 1. Make a **[minimal]** installation with **[multilib]**, **[pipewire]** and **[linux-zen]** kernel, then you can skip to [Aur helper](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#aur-helper-and-additional-packages-installation) step
 2. Skip [Setting up a graphical environment](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae#setting-up-a-graphical-environment)
 3. Install hyprland and requirements
