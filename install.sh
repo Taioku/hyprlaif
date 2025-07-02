@@ -89,7 +89,14 @@ else
 fi
 
 # ------------------------------------------------------------
-# Step 4: Hyprland plugins setup
+# Step 4: Enable essential services
+# ------------------------------------------------------------
+sudo systemctl enable --now NetworkManager
+sudo systemctl enable --now bluetooth
+sudo systemctl enable --user --now pipewire pipewire-pulse wireplumber
+
+# ------------------------------------------------------------
+# Step 5: Hyprland plugins setup
 # ------------------------------------------------------------
 if [[ "$XDG_CURRENT_DESKTOP" == "Hyprland" || -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
   echo "[✓] Hyprland detected."
