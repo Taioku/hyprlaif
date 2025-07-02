@@ -1,6 +1,5 @@
 # - Essential Packages
 yay -S --noconfirm --needed \
-  git base-devel
   hyprland wayland xdg-desktop-portal xdg-desktop-portal-hyprland xdg-user-dirs hyprpolkitagent \
   qt5-wayland qt6-wayland \
   pipewire pipewire-pulse wireplumber pulsemixer \
