@@ -33,9 +33,9 @@ prompt() {
   while true; do
     read -rp "$message [y/N]: " yn
     case $yn in
-      [Yy]*) return 0 ;;
-      [Nn]*|"") return 1 ;;
-      *) echo "Please answer y or n." ;;
+    [Yy]*) return 0 ;;
+    [Nn]* | "") return 1 ;;
+    *) echo "Please answer y or n." ;;
     esac
   done
 }
@@ -89,8 +89,24 @@ else
 fi
 
 # ------------------------------------------------------------
-# Step 4: Enable essential services
+# Step 4: Attempt to run Hyprland if not already running
 # ------------------------------------------------------------
+if [[ "$XDG_CURRENT_DESKTOP" != "Hyprland" && -z "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+  if prompt "Hyprland is not running. Attempt to start Hyprland session?"; then
+    echo "[+] Trying to run Hyprland..."
+    # Try to launch Hyprland in the background, from a tty or nested X session
+    if command -v Hyprland &>/dev/null; then
+      exec Hyprland
+    else
+      echo "[!] Hyprland executable not found in PATH!"
+    fi
+  else
+    echo "[!] Skipped starting Hyprland."
+  fi
+else
+  echo "[✓] Hyprland is already running."
+fi
+
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
 sudo systemctl enable --user --now pipewire pipewire-pulse wireplumber
@@ -127,4 +143,3 @@ else
 fi
 
 echo "[✓] Script complete."
-
