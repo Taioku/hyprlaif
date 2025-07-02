@@ -26,25 +26,45 @@ echo ""
 # Initialize drivers array
 DRIVERS=()
 
-# Common packages for all GPUs
-COMMON_PKGS=(libglvnd lib32-libglvnd)
+# Common packages for all setups
+COMMON_PKGS=(
+  libglvnd lib32-libglvnd
+  xorg-server xorg-xinit
+)
 
 # Intel
 if echo "$GPUS" | grep -qi intel; then
   echo "→ Intel GPU detected."
-  DRIVERS+=(mesa vulkan-intel libva-mesa-driver mesa-vdpau)
+  DRIVERS+=(
+    mesa vulkan-intel libva-mesa-driver
+    intel-media-driver libva-intel-driver
+    xf86-video-intel
+  )
 fi
 
 # AMD
 if echo "$GPUS" | grep -qi amd; then
   echo "→ AMD GPU detected."
-  DRIVERS+=(mesa vulkan-radeon libva-mesa-driver mesa-vdpau linux-firmware)
+  DRIVERS+=(
+    mesa vulkan-radeon libva-mesa-driver
+    mesa-vdpau linux-firmware
+    xf86-video-amdgpu xf86-video-ati
+  )
 fi
 
 # NVIDIA
 if echo "$GPUS" | grep -qi nvidia; then
   echo "→ NVIDIA GPU detected."
-  DRIVERS+=(nvidia nvidia-utils nvidia-settings)
+  DRIVERS+=(
+    nvidia nvidia-utils nvidia-settings
+    xf86-video-nouveau
+  )
+fi
+
+# VMware fallback (in case you're on VM)
+if echo "$GPUS" | grep -qi vmware; then
+  echo "→ VMware virtual GPU detected."
+  DRIVERS+=(xf86-video-vmware)
 fi
 
 # Add common packages
