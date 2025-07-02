@@ -59,11 +59,11 @@ echo "Packages to install: ${DRIVERS[*]}"
 # Prompt unless --yesall is passed
 if $YESALL; then
   echo "[+] Installing drivers without prompt..."
-  sudo pacman -S --needed "${DRIVERS[@]}"
+  yay -S --noconfirm --needed "${DRIVERS[@]}"
 else
   read -rp "Install these drivers now? [y/N]: " confirm
   if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    sudo pacman -S --needed "${DRIVERS[@]}"
+    yay -S --noconfirm --needed "${DRIVERS[@]}"
   else
     echo "[!] Installation skipped."
   fi
