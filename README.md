@@ -4,7 +4,7 @@ From Arch ISO to Hyprland, full personal guide to get my hyprland setup up and g
 In this guide i will be using:  
 - [**Hyprland Wiki**](https://wiki.hypr.land/)
 - [**tuxslack's**](https://github.com/tuxslack) win10-style-waybar [**\***](https://github.com/tuxslack/win10-style-waybar/tree/main?tab=readme-ov-file#MIT-1-ov-file)
-- [**Win 11**](https://www.gnome-look.org/p/2278411) GTK Theme
+- [**Win 11**](https://www.gnome-look.org/p/2278411) GTK Theme [**\***](https://github.com/yeyushengfan258/Win11-gtk-theme)
 - [**Win 11**](https://www.gnome-look.org/p/1546069) icon theme [**\***](https://github.com/yeyushengfan258/Win11-icon-theme)
 - [**Bibaa Modern Ice**](https://www.gnome-look.org/p/1197198) cursor theme [**\***](https://github.com/ful1e5/Bibata_Cursor)
 - [**creatiflux**](https://creatiflux.artstation.com/)'s wallpapers
