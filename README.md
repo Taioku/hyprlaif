@@ -1,7 +1,9 @@
 # Hyprlaif
+
 From Arch ISO to Hyprland, full personal guide to get my hyprland setup up and going.
 
 In this guide i will be using:  
+
 - [**Hyprland Wiki**](https://wiki.hypr.land/)
 - [**tuxslack's**](https://github.com/tuxslack) win10-style-waybar [**\***](https://github.com/tuxslack/win10-style-waybar/tree/main?tab=readme-ov-file#MIT-1-ov-file)
 - [**Win 11**](https://www.gnome-look.org/p/2278411) GTK Theme [**\***](https://github.com/yeyushengfan258/Win11-gtk-theme)
@@ -12,14 +14,23 @@ In this guide i will be using:
 # Arch Install
 
 ### 1. For the Arch installation we will be using archinstall script
+>
 > Make a **[minimal]** installation with **[multilib]** and **[linux-zen]** kernel then reboot
 
 ### 2. Dont forget to add yourself to wheel group
+
 ```bash
 sudo useradd -mG wheel $YOUR_USERNAME
 ```
 
-### 3. Install hyprland and requirements + setup:
+### 3. Install hyprland and requirements + setup
+
 ```bash
 git clone https://github.com/Taioku/hyprlaif.git && cd hyprlaif && ./install.sh
 ```
+
+## 🔑 Keybindings
+
+See [KEYBINDINGS.md](.config/hypr/KEYBINDINGS.md) for a full overview of all custom keybindings, including workspace controls, window management, and special commands.
+
+Your actual keybindings configuration is in [keybindings.conf](./keybindings.conf).
