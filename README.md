@@ -33,4 +33,4 @@ git clone https://github.com/Taioku/hyprlaif.git && cd hyprlaif && ./install.sh
 
 See [KEYBINDINGS.md](.config/hypr/KEYBINDINGS.md) for a full overview of all custom keybindings, including workspace controls, window management, and special commands.
 
-Your actual keybindings configuration is in [keybindings.conf](./keybindings.conf).
+Your actual keybindings configuration is in [keybindings.conf](.config/hypr/keybindings.conf).
