@@ -71,22 +71,54 @@ The installation script will install these packages:
 
 All configuration files are located in `hyprlaif/.config`:
 
-### Hyprland configs `hyprlaif/.config/hypr/`:
-```
-animations.conf           - Animation settings and effects
-autostart.conf            - Programs to launch at startup  
-environmentvariables.conf - Environment variable definitions
-hyprland.conf             - Main Hyprland configuration
-hyprpaper.conf            - Wallpaper management settings
-input.conf                - Input device configurations
-keybindings.conf          - Custom keyboard shortcuts
-layerrules.conf           - Layer-specific window rules
-looknfeel.conf            - Visual appearance settings
-monitors.conf             - Multi-monitor configurations
-variables.conf            - Custom variables and definitions
-windowrules.conf          - Window behavior rules
-windowsnworkspaces.conf   - Workspace and window management
-```
+### Hyprland - `hyprlaif/.config/hypr/`
+The heart of the desktop environment, managing windows, workspaces, and system behavior.
+
+| File | Purpose |
+|------|---------|
+| `animations.conf` | Animation settings and effects |
+| `autostart.conf` | Programs to launch at startup |
+| `environmentvariables.conf` | Environment variable definitions |
+| `hyprland.conf` | Main Hyprland configuration |
+| `hyprpaper.conf` | Wallpaper management settings |
+| `input.conf` | Input device configurations |
+| `keybindings.conf` | Custom keyboard shortcuts |
+| `layerrules.conf` | Layer-specific window rules |
+| `looknfeel.conf` | Visual appearance settings |
+| `monitors.conf` | Multi-monitor configurations |
+| `variables.conf` | Custom variables and definitions |
+| `windowrules.conf` | Window behavior rules |
+| `windowsnworkspaces.conf` | Workspace and window management |
+
+### fastfetch - `hyprlaif/.config/fastfetch/`
+System information display tool for showcasing your setup.
+
+| File | Purpose |
+|------|---------|
+| `config.jsonc` | Main fastfetch configuration with display modules and formatting |
+
+### kitty - `hyprlaif/.config/kitty/`
+GPU-accelerated terminal emulator configuration.
+
+| File | Purpose |
+|------|---------|
+| `kitty.conf` | Terminal emulator settings, fonts, colors, and key bindings |
+
+### waybar - `hyprlaif/.config/waybar/`
+Customizable status bar for Wayland compositors.
+
+| File | Purpose |
+|------|---------|
+| `config` | Main waybar configuration with modules and layout settings |
+| `style.css` | Styling and appearance customization for waybar elements |
+
+### wofi - `hyprlaif/.config/wofi/`
+Application launcher and menu system.
+
+| File | Purpose |
+|------|---------|
+| `config` | Application launcher configuration and behavior settings |
+| `style.css` | Visual styling and theme customization for wofi interface |
 
 # ⌨️ Keybindings
 
