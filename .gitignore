@@ -1,2 +1,8 @@
 # Ignore backed up files
 INSTALL/BACKUP/
+.icons/*
+!.icons/Bibata-Modern-Ice.tar.xz
+!.icons/Win11-black.tar.xz
+!.icons/Win11-red.tar.xz
+.themes/*
+!.themes/Win11-round-Dark.tar.xz

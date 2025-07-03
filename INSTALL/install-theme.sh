@@ -49,6 +49,23 @@ backup_and_link() {
   ln -sf "$SOURCE" "$DEST"
 }
 
+# Extract all .tar.xz files inside .icons and .themes in the hyprlaif folder
+extract_tar_xz_in_dir() {
+  local DIR=$1
+  echo "Extracting .tar.xz files in $DIR"
+
+  find "$DIR" -maxdepth 1 -type f -iname "*.tar.xz" | while read -r ARCHIVE; do
+    echo "Extracting: $ARCHIVE"
+    # Make a folder with the archive name (without .tar.xz)
+    TARGET_DIR="${ARCHIVE%.tar.xz}"
+    mkdir -p "$TARGET_DIR"
+    tar -xJf "$ARCHIVE" -C "$TARGET_DIR"
+  done
+}
+
+extract_tar_xz_in_dir "$HERE/../.icons"
+extract_tar_xz_in_dir "$HERE/../.themes"
+
 # Read files/folders from config and process
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Skip empty lines or comments
