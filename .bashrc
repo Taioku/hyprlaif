@@ -68,9 +68,9 @@ alias c='clear'
 alias bye='sudo shutdown -h now'
 alias loop='sudo reboot'
 alias fonts='fc-list -f "%{family}\n"'
-alias sing='~/.config/hyprscripts/sing.sh'
+alias sing='$(pwd)/.config/hypr/scripts/sing.sh'
 alias tm='btop'
-alias ss='cxxmatrix'
+alias ss='$(pwd)/.config/hypr/scripts/screensaver.sh'
 
 # Git shortcuts
 alias gita='git add'

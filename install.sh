@@ -109,7 +109,7 @@ fi
 
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
-sudo systemctl enable --user --now pipewire pipewire-pulse wireplumber
+sudo systemctl enable --now pipewire pipewire-pulse wireplumber
 
 # ------------------------------------------------------------
 # Step 5: Hyprland plugins setup
@@ -137,6 +137,22 @@ if [[ "$XDG_CURRENT_DESKTOP" == "Hyprland" || -n "$HYPRLAND_INSTANCE_SIGNATURE" 
   else
     echo "[!] Skipped enabling Hyprland plugins."
   fi
+
+else
+  echo "[!] Hyprland not detected. Skipping Hyprland plugins setup."
+fi
+
+# ------------------------------------------------------------
+# Step 6: Dotfiles itself
+# ------------------------------------------------------------
+if [[ "$XDG_CURRENT_DESKTOP" == "Hyprland" || -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+  echo "[✓] Hyprland detected."
+
+  if prompt "Backup configs and install dotfiles?"; then
+    cd INSTALL
+    ./install-theme
+  else
+    echo "[!] Skipped installing dotfiles, no theme will be applied."
 
 else
   echo "[!] Hyprland not detected. Skipping Hyprland plugins setup."
