@@ -1,8 +1,6 @@
-# 🌊 Hyprlaif
+# 🗔 Hyprlaif
 
 **From Arch ISO to Hyprland** - A complete personal guide for setting up my Hyprland dotfiles.
-
----
 
 ## 🧩 Components Used
 
@@ -20,7 +18,7 @@ This setup incorporates the following components:
 ---
 > **🚨 DO NOT DELETE THE HYPRLAIF FOLDER AFTER INSTALLATION!**
 > 
-> The hyprlaif folder contains the source files that are linked to your system configuration. Deleting this folder will break your setup and remove access to your configuration backups.
+> The hyprlaif folder contains the source files that are linked to your system configuration. Deleting this folder will break your setup and remove your configuration backups.
 
 ---
 
@@ -35,8 +33,6 @@ Use the `archinstall` script to create a minimal Arch Linux installation:
 - Choose **linux-zen** kernel
 - Complete installation and reboot
 
----
-
 ### 2. User Configuration
 
 Add your user to the wheel group for sudo privileges:
@@ -44,8 +40,6 @@ Add your user to the wheel group for sudo privileges:
 ```bash
 sudo useradd -mG wheel $YOUR_USERNAME
 ```
-
----
 
 ### 3. Hyprland Setup
 
@@ -55,74 +49,29 @@ Clone this repository and run the installation script:
 git clone https://github.com/Taioku/hyprlaif.git && cd hyprlaif && ./install.sh
 ```
 
----
-
-## 📦 What Gets Installed
+# 📦 What Gets Installed
 
 The installation script will install these packages:
 
-**🌊 Hyprland Core:**
-```
-hyprland xdg-desktop-portal-hyprland hyprpolkitagent
-qt5-wayland qt6-wayland
-```
+| Category | Packages |
+|----------|----------|
+| 🌊 Hyprland Core | hyprland, xdg-desktop-portal-hyprland, hyprpolkitagent, qt5-wayland, qt6-wayland |
+| 🔊 Audio System | pipewire, pipewire-pulse, wireplumber, pulsemixer |
+| 🌐 Network & Connectivity | networkmanager, bluez, bluez-utils, blueman |
+| 📸 Screenshots & Clipboard | wl-clipboard, grim, slurp, swappy |
+| 🎨 Desktop Environment | dunst, waybar, wofi, kitty, thunar |
+| 🛠️ System Utilities | unzip, wget, neovim, yazi, btop, fastfetch, zoxide, fzf, eza, feh |
+| 🖼️ Wallpaper Management | waypaper, hyprpaper |
+| 🔤 Fonts | ttf-jetbrains-mono-nerd, ttf-twemoji |
+| 🎭 Theming | nwg-look, gnome-themes-extra, gtk-engine-murrine, sassc |
+| 🧮 Applications | calc, mate-calc, bash-completion, mplayer |
+| 🎮 Fun Extras | lolcat, pipes.sh, bonsai.sh, asciiquarium, cava, cxxmatrix |
 
-**🔊 Audio System:**
-```
-pipewire pipewire-pulse wireplumber pulsemixer
-```
+# ⚙️ Configuration Files
 
-**🌐 Network & Connectivity:**
-```
-networkmanager bluez bluez-utils blueman
-```
+All configuration files are located in `hyprlaif/.config`:
 
-**📸 Screenshots & Clipboard:**
-```
-wl-clipboard grim slurp swappy
-```
-
-**🎨 Desktop Environment:**
-```
-dunst waybar wofi kitty thunar
-```
-
-**🛠️ System Utilities:**
-```
-unzip wget neovim yazi btop fastfetch zoxide fzf eza feh
-```
-
-**🖼️ Wallpaper Management:**
-```
-waypaper hyprpaper
-```
-
-**🔤 Fonts:**
-```
-ttf-jetbrains-mono-nerd ttf-twemoji
-```
-
-**🎭 Theming:**
-```
-nwg-look gnome-themes-extra gtk-engine-murrine sassc
-```
-
-**🧮 Applications:**
-```
-calc mate-calc bash-completion mplayer
-```
-
-**🎮 Fun Extras:**
-```
-lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
-```
-
----
-
-## ⚙️ Configuration Files
-
-All configuration files are located in `.config/hypr/`:
-
+### Hyprland configs `hyprlaif/.config/hypr/`:
 ```
 animations.conf           - Animation settings and effects
 autostart.conf            - Programs to launch at startup  
@@ -139,29 +88,6 @@ windowrules.conf          - Window behavior rules
 windowsnworkspaces.conf   - Workspace and window management
 ```
 
----
-
-## ⌨️ Keybindings
+# ⌨️ Keybindings
 
 For a complete overview of all custom keybindings, including workspace controls, window management, and special commands, see [KEYBINDINGS.md](.config/hypr/KEYBINDINGS.md).
-
-The keybindings configuration file is located at [keybindings.conf](.config/hypr/keybindings.conf).
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to all the amazing developers and creators who made this setup possible:
-
-- The Hyprland development team
-- [tuxslack](https://github.com/tuxslack) for the Win10-style Waybar
-- [yeyushengfan258](https://github.com/yeyushengfan258) for the Win11 themes
-- [ful1e5](https://github.com/ful1e5) for the Bibata cursor theme
-- [creatiflux](https://creatiflux.artstation.com/) for the beautiful wallpapers
-- The Arch Linux community
