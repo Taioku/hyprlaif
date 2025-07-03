@@ -101,7 +101,7 @@
 
 ## 🎛️ Waybar Controls
 
-| Keys                  |                  |
+| Keys                  | Action           |
 |-----------------------|------------------|
 | `$mainMod + W`        | Toggles Waybar   |
 | `$mainMod + ALT + P`  | Refreshes Waybar |
