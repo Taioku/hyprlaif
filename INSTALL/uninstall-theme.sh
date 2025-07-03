@@ -42,6 +42,9 @@ restore_backup() {
   fi
 }
 
+find "$HERE/../.icons" -mindepth 1 ! -name '*.tar.xz' -exec rm -rf {} +
+find "$HERE/../.themes" -mindepth 1 ! -name '*.tar.xz' -exec rm -rf {} +
+
 # Read files/folders from config and process
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Skip empty lines or comments
