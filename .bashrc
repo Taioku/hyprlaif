@@ -71,6 +71,7 @@ alias fonts='fc-list -f "%{family}\n"'
 alias sing='$(pwd)/.config/hypr/scripts/sing.sh'
 alias tm='btop'
 alias ss='$(pwd)/.config/hypr/scripts/screensaver.sh'
+alias s='sudo'
 
 # Git shortcuts
 alias gita='git add'

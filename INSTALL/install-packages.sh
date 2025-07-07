@@ -15,5 +15,4 @@ yay -S --noconfirm --needed \
   nwg-look gnome-themes-extra gtk-engine-murrine sassc \
   calc mate-calc bash-completion \
   mplayer \
-  lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix
-
+  lolcat pipes.sh bonsai.sh asciiquarium cava cxxmatrix yetris
