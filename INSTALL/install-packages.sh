@@ -3,7 +3,7 @@ yay -S --noconfirm --needed \
   hyprland xdg-desktop-portal-hyprland hyprpolkitagent \
   qt5-wayland qt6-wayland \
   pipewire pipewire-pulse wireplumber pulsemixer \
-  networkmanager bluez bluez-utils blueman \
+  networkmanager network-manager-applet bluez bluez-utils blueman \
   wl-clipboard grim slurp swappy \
   dunst waybar wofi \
   kitty thunar \
