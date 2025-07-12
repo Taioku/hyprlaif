@@ -1,217 +1,219 @@
+/* =======================
+   Color & Base Variables
+   ======================= */
 
-/*base background color*/
+/* Base background color */
 @define-color bg_main rgba(25, 25, 25, 0.65);
 @define-color bg_main_tooltip rgba(0, 0, 0, 0.7);
 
-
-/*base background color of selections */
+/* Selections */
 @define-color bg_hover rgba(200, 200, 200, 0.3);
-/*base background color of active elements */
 @define-color bg_active rgba(100, 100, 100, 0.5);
+@define-color bg_urgent rgba(100, 0, 35, 0.5);
 
-/*base border color*/
+/* Borders */
 @define-color border_main rgba(255, 255, 255, 0.2);
 
-/*text color for entries, views and content in general */
+/* Text */
 @define-color content_main white;
-/*text color for entries that are unselected */
 @define-color content_inactive rgba(255, 255, 255, 0.25);
+
+
+/* ===================
+   Base Reset
+   =================== */
 
 * {
   text-shadow: none;
   box-shadow: none;
   border: none;
   border-radius: 0;
-  font-family: "Adwaita Sans";
+  font-family: "JetbrainsMono Nerd Font";
   font-weight: 600;
-  font-size: 12px;	
+  font-size: 12px;
 }
 
+
+/* ===================
+   Waybar Window
+   =================== */
+
 window#waybar {
-  background:  @bg_main;
+  background: @bg_main;
   border-bottom: 1px solid @border_main;
   color: @content_main;
+  margin-left: 10px;
+  margin-right: 10px;
 }
+
+
+/* ===================
+   Tooltip
+   =================== */
 
 tooltip {
   background: @bg_main_tooltip;
   border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: @border_main;
+  border: 1px solid @border_main;
 }
-tooltip label{
+
+tooltip label {
   color: @content_main;
 }
 
+
+/* ===================
+   OS Button
+   =================== */
+
 #custom-os_button {
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 20px;
-  padding-left: 12px;
-  padding-right: 12px;
+  font-size: 18px;
+  padding: 0 14px;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 #custom-os_button:hover {
-  background:  @bg_hover;
-  color: @content_main;
+  background: @bg_hover;
 }
+
+
+/* ===================
+   Workspaces
+   =================== */
 
 #workspaces {
   color: transparent;
-  margin-right: 1.5px;
-  margin-left: 1.5px;
 }
+
 #workspaces button {
   padding: 3px;
   color: @content_inactive;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 #workspaces button.active {
   color: @content_main;
-  border-top: 3px solid white;
 }
-#workspaces button.focused {
-  color: @bg_active;
-}
+
 #workspaces button.urgent {
-  background:  rgba(255, 200, 0, 0.35);
-  border-top: 3px dashed @warning_color;
-  color: @warning_color;
+  background: @bg_urgent;
 }
+
 #workspaces button:hover {
   background: @bg_hover;
   color: @content_main;
 }
 
-#taskbar {
+#custom-workspaces_drawer_icon {
+  padding: 0 3px;
 }
 
+
+/* ===================
+   Taskbar
+   =================== */
+
 #taskbar button {
-  min-width: 100px;
-  border-top: 3px solid rgba(255, 255, 255, 0.3);
-  margin-left: 2px;
-  margin-right: 2px;
-  padding-left: 8px;
-  padding-right: 8px;
   color: white;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #taskbar button.active {
-  border-top: 3px solid white;
   background: @bg_active;
 }
 
+#taskbar button.urgent {
+  background: @bg_urgent;
+}
+
 #taskbar button:hover {
-  border-top: 3px solid white;
   background: @bg_hover;
-  color: @content_main;
 }
 
-#cpu, #disk, #memory {
-  padding: 5px;
+#custom-taskbar_drawer_icon {
+  padding: 0 3px;
 }
 
-#window {
-  border-radius: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
+
+/* ===================
+   System Resource Modules
+   =================== */
+
+#cpu,
+#memory,
+#disk {
+  padding: 0 6px;
 }
 
-#tray{
-  margin-left: 5px;
-  margin-right: 5px;
+
+/* ===================
+   Tray
+   =================== */
+
+#tray {
+  padding: 0 3px;
 }
-#tray > .passive {
-  border-top: none;
-}
-#tray > .active {
-  border-top: 3px solid white;
-}
+
 #tray > .needs-attention {
-  border-top: 3px solid @warning_color;
+  background: @bg_urgent;
 }
+
 #tray > widget {
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 #tray > widget:hover {
   background: @bg_hover;
 }
 
-#pulseaudio{
-  font-family: "JetbrainsMono Nerd Font";
-  padding-left: 5px;
-  padding-right: 4px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+/* ===================
+   Audio
+   =================== */
+
+#pulseaudio {
+  font-size: 12px;
+  padding: 0 3px;
 }
-#pulseaudio.muted{
-  font-size: 16;
-  padding: 7;
+
+#pulseaudio.muted {
+  font-size: 17px;
+  padding: 0 5px;
 }
+
 #pulseaudio:hover {
   background: @bg_hover;
 }
 
-#network {
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 16;
-  padding-left: 5px;
-  padding-right: 8px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-#network:hover {
-  background: @bg_hover;
-}
 
-
-#bluetooth {
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 16;
-  padding-left: 7px;
-  padding-right: 6px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-#bluetooth:hover {
-  background: @bg_hover;
-}
+/* ===================
+   Updates, Screenshot, Wallpaper
+   =================== */
 
 #custom-updates {
-  font-family: "JetbrainsMono Nerd Font";
-  padding-left: 5px;
-  padding-right: 10px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-#custom-updates:hover {
-  background: @bg_hover;
-}
-
-#custom-screenshot {
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 16;
-  padding-left: 5px;
-  padding-right: 8px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-#custom-screenshot:hover {
-  background: @bg_hover;
-}
-
-#custom-wallpaper {
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 16;
-  padding-left: 6px;
+  font-size: 12px;
+  padding-left: 4px;
   padding-right: 9px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
+#custom-screenshot,
+#custom-wallpaper {
+  font-size: 14px;
+  padding-left: 6px;
+  padding-right: 8px;
+}
+
+#custom-updates:hover,
+#custom-screenshot:hover,
 #custom-wallpaper:hover {
   background: @bg_hover;
 }
 
-#clock {
+/* ===================
+   Custom Lock
+   =================== */
+
+#custom-lock_waybar {
+  padding-left: 4px;
   padding-right: 10px;
-  padding-left: 7px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-/*#clock:hover {
-  background: @bg_hover;
-}*/

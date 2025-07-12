@@ -1,162 +1,220 @@
 {
-    "layer": "bottom",
-    "position": "top",
-    "mode": "dock",
-    "exclusive": true,
-    "gtk-layer-shell": true,
-    "margin-bottom": -1,
-    "passthrough": false,
-    "modules-left": [
-        "custom/os_button",
-        "hyprland/workspaces",
-        "wlr/taskbar"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "tray",
-        "pulseaudio",
-        "custom/updates",
-        "custom/screenshot",
-        "custom/wallpaper",
-        "battery",
-        "cpu",
-        "custom/temperature_cpu",
-        "custom/temperature_gpu",
-        "memory",
-        "disk"
-    ],
-    "hyprland/workspaces": {
-        "icon-size": 32,
-        "spacing": 16,
-        "on-scroll-up": "hyprctl dispatch workspace r+1",
-        "on-scroll-down": "hyprctl dispatch workspace r-1"
+  "layer": "top",
+  "mode": "dock",
+  "margin-bottom": 3,
+  "reload_style_on_change": true,
+
+  "modules-left": [
+    "custom/os_button",
+    "group/workspaces_drawer",
+    "group/taskbar_drawer"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "custom/updates",
+    "custom/screenshot",
+    "custom/wallpaper",
+    "battery",
+    "cpu",
+    "custom/temperature_cpu",
+    "custom/temperature_gpu",
+    "memory",
+    "disk",
+    "custom/lock_waybar"
+  ],
+
+  "custom/os_button": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "wofi --show drun -n -c ~/.config/wofi/config -s ~/.config/wofi/style.css"
+  },
+
+  "group/workspaces_drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 250,
+      "children-class": "not-power",
+      "transition-left-to-right": true,
+      "click-to-reveal": true
     },
-    "custom/os_button": {
-        "format": "",
-        "on-click": "wofi --show drun -n -c ~/.config/wofi/config -s ~/.config/wofi/style.css",
-        "tooltip": false
+    "modules": [
+      "custom/workspaces_drawer_icon",
+      "hyprland/workspaces"
+    ]
+  },
+
+  "custom/workspaces_drawer_icon": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+    "icon-size": 32,
+    "spacing": 16,
+    "on-scroll-up": "hyprctl dispatch workspace r+1",
+    "on-scroll-down": "hyprctl dispatch workspace r-1"
+  },
+
+  "group/taskbar_drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": true,
+      "click-to-reveal": true
     },
-    "cpu": {
-        "interval": 5,
-        "format": "  {usage}%",
-        "max-length": 10,
-        "on-click": "kitty -e btop"
+    "modules": [
+      "custom/taskbar_drawer_icon",
+      "wlr/taskbar"
+    ]
+  },
+
+  "custom/taskbar_drawer_icon": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon} {title:.17}",
+    "icon-size": 22,
+    "spacing": 3,
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "tooltip-format": "{title}",
+    "ignore-list": []
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 3
+  },
+
+  "pulseaudio": {
+    "max-volume": 150,
+    "scroll-step": 5,
+    "format": "{icon}",
+    "format-muted": "󰸈",
+    "tooltip-format": "{volume}%",
+    "format-icons": {
+      "default": [
+        " ",
+        " ",
+        " "
+      ]
     },
-    "disk": {
-        "interval": 30,
-        "format": "󰋊 {percentage_used}%",
-        "path": "/",
-        "tooltip": true,
-        "unit": "GB",
-        "tooltip-format":  "Available {free} of {total}",
-        "on-click": "nautilus",
-        "on-click-right": "kitty -e yay -Sc --noconfirm"
+    "on-click": "pulsemixer --toggle-mute",
+    "on-click-middle": "kitty -e pulsemixer",
+    "on-scroll-up": "pulsemixer --change-volume +5",
+    "on-scroll-down": "pulsemixer --change-volume -5"
+  },
+
+  "custom/updates": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/check_updates.sh",
+    "interval": 600,
+    "return-type": "json",
+    "on-click": "kitty -e yay -Syu"
+  },
+
+  "custom/screenshot": {
+    "format": "󱣵",
+    "tooltip": false,
+    "on-click": "grim -g \"$(slurp)\" - | swappy -f -",
+    "on-click-right": "grim -g \"$(slurp)\" - | wl-copy"
+  },
+
+  "custom/wallpaper": {
+    "format": "󰸉",
+    "tooltip-format": "Left click - static wallpaper.\nRight click - .wallpapers loop.",
+    "on-click": "kill -9 $(pgrep -f wallpaper-loop.sh) & waypaper",
+    "on-click-right": "kill -9 $(pgrep -f wallpaper-loop.sh) & ~/.wallpapers/scripts/./wallpaper-loop.sh"
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
     },
-    "memory": {
-        "interval": 10,
-        "format": "  {percentage}%",
-        "max-length": 10,
-        "tooltip": true,
-        "tooltip-format": "RAM - {used:0.1f}GiB used"
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "max-length": 10,
+    "on-click": "kitty -e btop"
+  },
+
+  "memory": {
+    "interval": 10,
+    "format": " {percentage}%",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "RAM - {used:0.1f}GiB used"
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "path": "/",
+    "unit": "GB",
+    "tooltip": true,
+    "tooltip-format": "Available {free} of {total}",
+    "on-click": "thunar",
+    "on-click-right": "kitty -e yay -Sc --noconfirm"
+  },
+  
+  "custom/lock_waybar": {
+    "tooltip": false,
+    "exec": "~/.config/waybar/scripts/lock_status.sh",
+    "interval": 1,
+    "on-click": "~/.config/waybar/scripts/lock_toggle.sh"
+  },
+  
+  "clock": {
+      "format": "{:%R  %d.%m.%Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#C8C8FF'><b>{}</b></span>",
+        "days": "<span color='#FFFFFF'><b>{}</b></span>",
+        "weeks": "<span color='#99FFDD'><b>W{}</b></span>",
+        "weekdays": "<span color='#FFCC66'><b>{}</b></span>",
+        "today": "<span color='#FF3C5A'><b><u>{}</u></b></span>"
+      }
     },
-    "wlr/taskbar": {
-        "format": "{icon} {title:.17}",
-        "icon-size": 28,
-        "spacing": 3,
-        "on-click-middle": "close",
-        "tooltip-format": "{title}",
-        "ignore-list": [],
-        "on-click": "activate"
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 3
-    },
-    "clock": {
-        "format": "      {:%R\n %d.%m.%Y}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "month",
-            "mode-mon-col": 3,
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "format": {
-                "months": "<span color='#C8C8FF'><b>{}</b></span>",
-                "days": "<span color='#FFFFFF'><b>{}</b></span>",
-                "weeks": "<span color='#99FFDD'><b>W{}</b></span>",
-                "weekdays": "<span color='#FFCC66'><b>{}</b></span>",
-                "today": "<span color='#FF3C5A'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
-    },
-    "custom/updates": {
-      "format": "{}",
-      "exec": "~/.config/waybar/scripts/check_updates.sh",
-      "interval": 600,
-      "return-type": "json",
-      "on-click": "kitty -e yay -Syu"
-    },
-    "custom/screenshot": {
-        "format": "󱣵",
-        "on-click": "grim -g \"$(slurp)\" - | swappy -f -",
-        "on-click-right": "grim -g \"$(slurp)\" - | wl-copy",
-        "tooltip": false
-    },
-    "custom/wallpaper": {
-        "format": "󰸉",
-        "on-click": "kill -9 $(pgrep -f wallpaper-loop.sh) & waypaper",
-        "on-click-right": "kill -9 $(pgrep -f wallpaper-loop.sh) & ~/.wallpapers/scripts/./wallpaper-loop.sh",
-        "tooltip-format": "Left click - static wallpaper.\nRight click - .wallpapers loop."
-    },    
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "󰂎",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ]
-    },
-    "pulseaudio": {
-        "max-volume": 150,
-        "scroll-step": 5,
-        "format": "{icon}",
-        "tooltip-format": "{volume}%",
-        "format-muted": "󰸈",
-        "format-icons": {
-            "default": [
-                " ",
-                " ",
-                " "
-            ]
-        },
-	      "on-click": "pulsemixer --toggle-mute",
-	      "on-scroll-up": "pulsemixer --change-volume +5",
-	      "on-scroll-down": "pulsemixer --change-volume -5",
-        "on-click-middle": "kitty -e pulsemixer"
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
     }
+  }
 }
+
