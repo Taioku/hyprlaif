@@ -64,7 +64,7 @@ alias grep='grep --color=always'
 alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 
 # Misc
-alias c='clear'
+alias c='clear && fastfetch'
 alias bye='sudo shutdown -h now'
 alias loop='sudo reboot'
 alias fonts='fc-list -f "%{family}\n"'
