@@ -159,6 +159,55 @@ prettyfetch() {
     fastfetch --raw - --logo-width 38
 }
 
+# Firefox webapp launcher
+fwa() {
+  if [ -z "$1" ]; then
+    echo "Usage: fwa <url>"
+    return 1
+  fi
+
+  local URL="$1"
+
+  # Auto-generate profile name: "webapp-<domain>"
+  local DOMAIN=$(echo "$URL" | awk -F/ '{print $3}')
+  local PROFILE="webapp-$DOMAIN"
+
+  local PROFILE_DIR="$HOME/.mozilla/firefox"
+  local PROFILES_INI="$PROFILE_DIR/profiles.ini"
+
+  # Check if profile exists
+  if ! grep -q "\[$PROFILE\]" "$PROFILES_INI"; then
+    echo "Creating Firefox profile: $PROFILE"
+    firefox -CreateProfile "$PROFILE"
+
+    # Find profile folder name
+    local PROFILE_FOLDER=$(grep -A 2 "\[$PROFILE\]" "$PROFILES_INI" | grep Path= | cut -d= -f2)
+
+    # Enable userChrome.css
+    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >>"$PROFILE_DIR/$PROFILE_FOLDER/user.js"
+
+    # Add userChrome.css
+    mkdir -p "$PROFILE_DIR/$PROFILE_FOLDER/chrome"
+    cat >"$PROFILE_DIR/$PROFILE_FOLDER/chrome/userChrome.css" <<EOF
+/* Hide tabs and navigation bar */
+#TabsToolbar, #nav-bar {
+  visibility: collapse !important;
+}
+#PersonalToolbar {
+  visibility: collapse !important;
+}
+EOF
+
+    echo "Profile '$PROFILE' created with userChrome.css."
+  else
+    # Find profile folder name
+    local PROFILE_FOLDER=$(grep -A 2 "\[$PROFILE\]" "$PROFILES_INI" | grep Path= | cut -d= -f2)
+  fi
+
+  echo "Launching $URL with profile '$PROFILE'..."
+  firefox --no-remote --profile "$PROFILE_DIR/$PROFILE_FOLDER" --new-window "$URL"
+}
+
 ## ── Startup Bindings ───────────────────────────────────────
 # Ctrl-F runs zoxide interactive mode
 bind '"\C-f":"cdi\n"'
