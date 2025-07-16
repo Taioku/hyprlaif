@@ -67,7 +67,7 @@ tooltip label {
    =================== */
 
 #custom-os_button {
-  font-size: 18px;
+  font-size: 12px;
   padding: 0 14px;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
