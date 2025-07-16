@@ -1,6 +1,6 @@
-@define-color bg #141419;
-@define-color text #c8c8ff;
-@define-color red #ff3c5a;
+@define-color bg #111111;
+@define-color text #282833;
+@define-color red #ff0035;
 @define-color black #403333;
 @define-color white #ffffff;
 
@@ -13,7 +13,7 @@
 
 * {
     all: unset;
-    font-family: 'Noto Sans';
+    font-family: 'JetBrainsMono Nerd Font';
     font-size: 18px;
     outline: none;
     border: none;
@@ -25,7 +25,7 @@ window {
     all:unset;
     padding: 20px;
     border-radius: 0px;
-    background-color: alpha(@bg,.5);
+    background-color: @bg;
 }
 #inner-box {
     margin: 2px;
@@ -50,7 +50,7 @@ window {
     padding: 20px;
     border: none;
     outline: none;
-    color: @text;
+    color: @white;
     box-shadow: 1px 1px 5px rgba(@black, .5);
     border-radius: 0;
     background-color: alpha(@bg,.2);
@@ -80,6 +80,7 @@ window {
     color: @text;
     outline: none;
 }
+
 #entry {
     border: none;
     margin: 5px;
@@ -88,12 +89,6 @@ window {
 #entry arrow {
     border: none;
     color: @text;
-}
-#entry:selected {
-    box-shadow: 1px 1px 5px rgba(@black, .5);
-    border: none;
-    border-radius: 0px;
-    background-color: alpha(@bg, .2);
 }
 #entry:selected #text {
     color: @white;
