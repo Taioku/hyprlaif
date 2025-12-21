@@ -2,6 +2,8 @@
 
 **From Arch ISO to Hyprland** - A complete personal guide for setting up my Hyprland dotfiles.
 
+> ⚠️ Note: I still need to add pictures of the working system.
+
 ## 🧩 Components Used
 
 This setup incorporates the following components:
@@ -12,6 +14,10 @@ This setup incorporates the following components:
 - 🔗 [**Win 11 Icon Theme**](https://www.gnome-look.org/p/1546069) - Windows 11 icon pack ([GitHub](https://github.com/yeyushengfan258/Win11-icon-theme))
 - 🖱️ [**Bibata Modern Ice**](https://www.gnome-look.org/p/1197198) - Modern cursor theme ([GitHub](https://github.com/ful1e5/Bibata_Cursor))
 - 🖼️ [**creatiflux**](https://creatiflux.artstation.com/) - Wallpaper collection
+
+## 🛣️ Planned Additions
+
+- 🚀 Raycast application launcher
 
 # ⚠️ Important Warning
 
